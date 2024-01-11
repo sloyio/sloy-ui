@@ -152,7 +152,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   if (loading) {
     return (
       <Wrapper>
-        <AnimatedLogo color="rgba(0, 0, 0, 0)" radius="180px" />
+        <AnimatedLogo radius="180px" />
       </Wrapper>
     );
   }

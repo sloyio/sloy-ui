@@ -27,8 +27,3 @@ export const Active = Template.bind({});
 Active.args = {
   active: true,
 };
-
-export const HoverAnimation = Template.bind({});
-HoverAnimation.args = {
-  withLogoHover: true,
-};
