@@ -19,20 +19,20 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
   font-size: 16px;
   line-height: 20px;
   gap: 4px;
-  background-color: #1e2841;
+  background-color: ${({ theme }) => theme.colors.background.primary};
   padding: 12px 16px;
   user-select: none;
   cursor: pointer;
   &:hover {
-    background-color: #040d24;
+    background-color: ${({ theme }) => theme.colors.background.secondary};
   }
   &:active {
-    background-color: #141d34;
+    background-color: ${({ theme }) => theme.colors.background.tertiary};
   }
-  ${({ $opened }) =>
+  ${({ $opened, theme }) =>
     $opened &&
     css`
-      background-color: #141d34;
+      background-color: ${theme.colors.background.tertiary};
     `}
 `;
 const Content = styled.div`

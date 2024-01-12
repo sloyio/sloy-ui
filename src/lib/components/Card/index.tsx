@@ -1,11 +1,12 @@
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef, useMemo } from 'react';
 import styled from 'styled-components';
 import { Divider } from '../Divider';
 import { AnimatedLogo } from '../AnimatedLogo';
+import { removeDuplicatedDividers } from './utils/removeDuplicatedDividers';
 
 type DividerCardBlock = { type: 'divider' };
-type ValueCardBlock = { type: 'value'; title?: string; value: ReactNode };
-type SectionCardBlock = { type: 'section'; title?: string; value: ReactNode };
+type ValueCardBlock = { type: string; title?: string; value: ReactNode };
+type SectionCardBlock = { type: string; title?: string; value: ReactNode };
 
 export type CardBlock = DividerCardBlock | ValueCardBlock | SectionCardBlock;
 
@@ -33,7 +34,6 @@ const Cover = styled.img`
   margin-left: -${POPUP_HORIZONTAL_PADDING}px;
   margin-right: -${POPUP_HORIZONTAL_PADDING}px;
   margin-bottom: 8px;
-
   display: block;
   width: calc(100% + ${POPUP_HORIZONTAL_PADDING * 2}px);
   height: auto;
@@ -149,6 +149,11 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   },
   ref,
 ) {
+  const filteredBlocks = useMemo(
+    () => removeDuplicatedDividers(blocks),
+    [blocks],
+  );
+
   if (loading) {
     return (
       <Wrapper>
@@ -173,9 +178,9 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
         )}
       </Header>
       <Divider />
-      {blocks.length > 0 && (
+      {filteredBlocks.length > 0 && (
         <Blocks>
-          {blocks.map((block, i) => (
+          {filteredBlocks.map((block, i) => (
             <CardBlock key={i} block={block} />
           ))}
         </Blocks>

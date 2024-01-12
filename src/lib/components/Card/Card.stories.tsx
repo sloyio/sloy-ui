@@ -22,6 +22,8 @@ const Template: StoryFn<typeof Card> = (args: CardProps) => {
         { type: 'value', title: 'Серия дома', value: 'ПКМ.11-2017-1-АР.2' },
         { type: 'value', title: 'Количество этажей', value: '12' },
         { type: 'divider' },
+        { type: 'divider' },
+        { type: 'divider' },
         {
           type: 'section',
           title: 'Дизайн-код фасада',

@@ -2,18 +2,18 @@
 
 React components for ekaterinburgdev projects
 
-## Installation
+## Local server
+
+```
+npm start
+```
+
+## Usage
 
 ```
 npm i sloy-ui
 
 Add sloy-ui/fonts.css
-```
-
-## Local server
-
-```
-npm start
 ```
 
 ## Publish storybook
