@@ -34,6 +34,7 @@ const Description = styled.div`
 const Prefix = styled.div``;
 const Postfix = styled.div`
   color: #9baac3;
+  white-space: nowrap;
 `;
 
 interface Props {

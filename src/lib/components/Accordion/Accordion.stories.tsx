@@ -29,20 +29,20 @@ const Template: StoryFn<typeof Accordion> = (args: any) => {
       title: 'Красная линия',
       subTitle: '35',
       description: 'Маршрут по историческому центру города',
-      postfix: '56%',
+      postfix: '56 %',
     },
     {
       id: 2,
       title: 'Синяя линия',
       subTitle: '11',
-      postfix: '23%',
+      postfix: '23 %',
     },
     {
       id: 3,
       title: 'Title',
       subTitle: '29',
       description: 'Арт-объекты фестиваля уличного искусства «Стенограффия»',
-      postfix: '31%',
+      postfix: '31 %',
     },
   ];
 

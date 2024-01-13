@@ -29,19 +29,19 @@ export function Switch({ isSelected, toggle }: SwitchProps) {
           {...focusProps}
         />
       </VisuallyHidden>
-      <svg width={40} height={24} aria-hidden="true">
+      <svg width={38} height={24} aria-hidden="true">
         <rect
           x={1}
           y={1}
-          width={38}
+          width={36}
           height={20}
           rx={10}
           fill={isSelected ? 'rgba(0, 180 ,0, 75%)' : 'rgba(255,255,255,.16)'}
-          stroke={isFocusVisible ? '#FFF' : '#0F182E'}
-          strokeWidth={2}
+          stroke={isFocusVisible ? '#FFF' : '#1e2841'}
+          strokeWidth={0}
         />
         <circle
-          cx={isSelected ? 30 : 10}
+          cx={isSelected ? 27 : 11}
           cy={11}
           r={8}
           fill={isSelected ? '#FFF' : '#9B9EA8'}

@@ -16,6 +16,11 @@ export const defaultTheme: DefaultTheme = {
       secondary: '#040d24',
       tertiary: '#141d34',
     },
+    elements: {
+      primary: '#1e2841',
+      secondary: '#040d24',
+      tertiary: '#3c4669',
+    }
   },
 };
 
@@ -31,9 +36,14 @@ export const sloyTheme: DefaultTheme = {
       primary: '#FFF',
     },
     background: {
+      primary: 'rgba(10, 13, 22, 0.7)',
+      secondary: 'rgba(96, 131, 255, 0.15)',
+      tertiary: 'rgba(96, 131, 255, 0.1)',
+    },
+    elements: {
       primary: '#1e2841',
       secondary: '#040d24',
-      tertiary: '#141d34',
-    },
+      tertiary: '#3c4669',
+    }
   },
 };

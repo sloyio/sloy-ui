@@ -19,10 +19,12 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
   font-size: 16px;
   line-height: 20px;
   gap: 4px;
-  background-color: ${({ theme }) => theme.colors.background.primary};
-  padding: 12px 16px;
+  background-color: none;
+  padding: 12px;
+  border-radius: 8px;
   user-select: none;
   cursor: pointer;
+  transition: background-color .05s ease-out;
   &:hover {
     background-color: ${({ theme }) => theme.colors.background.secondary};
   }
@@ -33,6 +35,7 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
     $opened &&
     css`
       background-color: ${theme.colors.background.tertiary};
+      border-radius: 8px 8px 0 0;
     `}
 `;
 const Content = styled.div`
@@ -58,13 +61,19 @@ const Postfix = styled.div`
   color: #9baac3;
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-top: 4px;
+  &:first-child {
+    margin-top: 0px;
+  }
+`;
 
 const Body = styled.div<{
   $horizontalGap: Gap;
   $verticalGap: Gap;
 }>`
-  background-color: #141d34;
+  background-color: ${({ theme }) => theme.colors.background.tertiary};
+  border-radius: 0 0 8px 8px;
   padding: ${({ $horizontalGap, $verticalGap }) => css`
     ${$verticalGap}px
     ${$horizontalGap}px
@@ -78,7 +87,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
     {
       title,
       subTitle,
-      horizontalGap = 16,
+      horizontalGap = 12,
       verticalGap = 8,
       children,
       toggle,
@@ -113,10 +122,13 @@ export const Accordion = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  border: 8px solid #1e2841;
+  padding: 8px;
+  background-color: ${({ theme }) => theme.colors.background.primary};
+  // box-shadow: 0 0 0 8px ${({ theme }) => theme.colors.background.primary} inset;
+  backdrop-filter: blur(20px);
   overflow: auto;
 
-  ${Container}:first-child {
+  ${Container} {
     border-radius: 8px 8px 0 0;
   }
 

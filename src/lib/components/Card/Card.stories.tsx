@@ -33,7 +33,7 @@ const Template: StoryFn<typeof Card> = (args: CardProps) => {
       actions={
         <>
           <Button type={ButtonType.DEFAULT} size={ButtonSize.SMALL}>
-            60.345323, 56.431234 13
+            60.345323, 56.431234
           </Button>
           <Button type={ButtonType.DEFAULT} size={ButtonSize.SMALL}>
             Ссылка на объект
@@ -44,9 +44,6 @@ const Template: StoryFn<typeof Card> = (args: CardProps) => {
         <>
           <Button type={ButtonType.DEFAULT} size={ButtonSize.MEDIUM}>
             Дополнить или поправить
-          </Button>
-          <Button type={ButtonType.DEFAULT} size={ButtonSize.MEDIUM}>
-            Скачать датасет
           </Button>
         </>
       }
