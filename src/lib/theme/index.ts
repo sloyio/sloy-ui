@@ -20,7 +20,15 @@ export const defaultTheme: DefaultTheme = {
       primary: '#1e2841',
       secondary: '#040d24',
       tertiary: '#3c4669',
-    }
+    },
+  },
+  size: {
+   xs:    '2px',
+    s:    '4px',
+    m:    '8px',
+    l:   '12px',
+    xl:  '16px',
+    xxl: '20px',
   },
 };
 
@@ -44,6 +52,15 @@ export const sloyTheme: DefaultTheme = {
       primary: '#1e2841',
       secondary: '#040d24',
       tertiary: '#3c4669',
-    }
+    },
   },
+  size: {
+   xs:    '2px',
+    s:    '4px',
+    m:    '8px',
+    l:   '12px',
+    xl:  '16px',
+    xxl: '20px',
+  },
+  blur: '20px',
 };
