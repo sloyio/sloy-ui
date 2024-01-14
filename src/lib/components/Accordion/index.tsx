@@ -86,7 +86,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
     {
       title,
       subTitle,
-      horizontalGap = 12,
+      horizontalGap = 16,
       verticalGap = 8,
       children,
       toggle,
@@ -108,7 +108,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
           </Postfix>
         </Wrapper>
         {isSelected && children && (
-          <Body $horizontalGap={horizontalGap as Gap} $verticalGap={verticalGap as Gap}>
+          <Body $horizontalGap={horizontalGap} $verticalGap={verticalGap}>
             {children}
           </Body>
         )}
