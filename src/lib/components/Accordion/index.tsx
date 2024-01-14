@@ -1,5 +1,6 @@
 import { ReactNode, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
+import { rgba } from 'polished';
 import { Switch } from '../Switch';
 import { ICheckboxState } from '../../types/ICheckboxState';
 
@@ -16,12 +17,12 @@ interface Props extends ICheckboxState {
 
 const Wrapper = styled.label<{ $opened?: boolean }>`
   display: flex;
-  font-size: 16px;
-  line-height: 20px;
-  gap: 4px;
+  font-size: ${({ theme }) => theme.size.xl};
+  line-height: ${({ theme }) => theme.size.xxl};
+  gap: ${({ theme }) => theme.size.s};
   background-color: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: ${({ theme }) => theme.size.l};
+  border-radius: ${({ theme }) => theme.size.m};
   user-select: none;
   cursor: pointer;
   transition: background-color .05s ease-out;
@@ -35,18 +36,18 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
     $opened &&
     css`
       background-color: ${theme.colors.background.tertiary};
-      border-radius: 8px 8px 0 0;
+      border-radius: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m} 0 0;
     `}
 `;
 const Content = styled.div`
   width: 100%;
-  gap: 2px;
+  gap: ${({ theme }) => theme.size.xs};
   display: flex;
   flex-direction: column;
 `;
 const TitleWrapper = styled.div`
   display: flex;
-  gap: 4px;
+  gap: ${({ theme }) => theme.size.s};
 `;
 const Title = styled.span`
   font-weight: 500;
@@ -61,12 +62,7 @@ const Postfix = styled.div`
   color: #9baac3;
 `;
 
-const Container = styled.div`
-  margin-top: 4px;
-  &:first-child {
-    margin-top: 0px;
-  }
-`;
+const Container = styled.div``;
 
 const Body = styled.div<{
   $horizontalGap: Gap;
@@ -80,6 +76,9 @@ const Body = styled.div<{
     ${$verticalGap + 16}px
     ${$horizontalGap}px
   `};
+  &:empty {
+    display: none;
+  }
 `;
 
 export const AccordionItem = forwardRef<HTMLDivElement, Props>(
@@ -118,21 +117,38 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
   },
 );
 
+// function getBackgroundStyle({ theme }, color, opacity) {
+//   const selectedColor = theme.colors.background[color];
+//
+//   if (theme.blur > 0) {
+//     return `
+//       background-color: ${rgba(selectedColor, opacity)};
+//       backdrop-filter: blur(${theme.blur});
+//     `
+//   }
+//
+//   return `
+//     background-color: ${selectedColor};
+//   `
+// }
+
+
 export const Accordion = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
-  padding: 8px;
+  border-radius: ${({ theme }) => theme.size.xl};
+  padding: ${({ theme }) => theme.size.m};
+  gap: ${({ theme }) => theme.size.s};
   background-color: ${({ theme }) => theme.colors.background.primary};
-  // box-shadow: 0 0 0 8px ${({ theme }) => theme.colors.background.primary} inset;
   backdrop-filter: blur(20px);
   overflow: auto;
+  ${'' /* ${getBackgroundStyle({ theme }, 'primary', 0.7)}; */}
 
   ${Container} {
-    border-radius: 8px 8px 0 0;
+    border-radius: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m} 0 0;
   }
 
   ${Container}:last-child {
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m};
   }
 `;
