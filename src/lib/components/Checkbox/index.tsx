@@ -85,6 +85,7 @@ export function Checkbox({
             strokeMiterlimit="3.8637"
             strokeLinecap="square"
             strokeLinejoin="round"
+            fill="none"
           />
         )}
         {props.isIndeterminate && (
