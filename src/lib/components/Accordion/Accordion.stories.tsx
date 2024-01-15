@@ -3,6 +3,7 @@ import { StoryFn } from '@storybook/react';
 import { Accordion, AccordionItem } from '.';
 import { Checkbox, useCheckboxState } from '../Checkbox';
 import { ListGrid, ListGridItem } from '../ListGrid';
+import { RangeHistorgramDemo } from '../RangeHistogram/RangeHistogram.stories';
 
 export default {
   title: 'Organisms/Accordion',
@@ -22,7 +23,7 @@ function ItemCheckbox() {
   return <Checkbox {...state} />;
 }
 
-const Template: StoryFn<typeof Accordion> = (args: any) => {
+const Template: StoryFn<typeof Accordion> = (args) => {
   const rows = [
     {
       id: 1,
@@ -49,7 +50,7 @@ const Template: StoryFn<typeof Accordion> = (args: any) => {
   return (
     <div style={{ maxWidth: 400 }}>
       <Accordion {...args}>
-        <StatefulAccordionItem title="Возраст домов" subTitle="3164">
+        <StatefulAccordionItem title="Checkboxes" subTitle="123">
           <ListGrid>
             {rows.map((item) => (
               <ListGridItem key={item.id} prefix={<ItemCheckbox />} {...item}>
@@ -58,32 +59,11 @@ const Template: StoryFn<typeof Accordion> = (args: any) => {
             ))}
           </ListGrid>
         </StatefulAccordionItem>
-        <StatefulAccordionItem title="Возраст домов" subTitle="3164">
-          <ListGrid>
-            {rows.map((item) => (
-              <ListGridItem key={item.id} prefix={<ItemCheckbox />} {...item}>
-                {item.title}
-              </ListGridItem>
-            ))}
-          </ListGrid>
+        <StatefulAccordionItem title="Hostogram" subTitle="345">
+          <RangeHistorgramDemo />
         </StatefulAccordionItem>
-        <StatefulAccordionItem title="Возраст домов" subTitle="3164">
-          <ListGrid>
-            {rows.map((item) => (
-              <ListGridItem key={item.id} prefix={<ItemCheckbox />} {...item}>
-                {item.title}
-              </ListGridItem>
-            ))}
-          </ListGrid>
-        </StatefulAccordionItem>
-        <StatefulAccordionItem title="Возраст домов" subTitle="3164">
-          <ListGrid>
-            {rows.map((item) => (
-              <ListGridItem key={item.id} prefix={<ItemCheckbox />} {...item}>
-                {item.title}
-              </ListGridItem>
-            ))}
-          </ListGrid>
+        <StatefulAccordionItem title="Возраст домов" subTitle="991">
+          Текст
         </StatefulAccordionItem>
       </Accordion>
     </div>
