@@ -22,6 +22,11 @@ export const defaultTheme: DefaultTheme = {
       tertiary: '#3c4669',
     },
   },
+  opacity: {
+    primary: 1,
+    secondary: 1,
+    hover: 1,
+  },
   size: {
     xs: '2px',
     s: '4px',
@@ -44,15 +49,20 @@ export const sloyTheme: DefaultTheme = {
       primary: '#FFF',
     },
     background: {
-      primary: 'rgba(10, 13, 22, 0.7)',
-      secondary: 'rgba(96, 131, 255, 0.15)',
-      tertiary: 'rgba(96, 131, 255, 0.1)',
+      primary: '#0a0d16',
+      secondary: '#6083ff',
+      tertiary: '#6083ff',
     },
     elements: {
       primary: '#1e2841',
       secondary: '#040d24',
       tertiary: '#3c4669',
     },
+  },
+  opacity: {
+    primary: 0.7,
+    secondary: 0.1,
+    hover: 0.2,
   },
   size: {
     xs: '2px',
@@ -62,5 +72,5 @@ export const sloyTheme: DefaultTheme = {
     xl: '16px',
     xxl: '20px',
   },
-  blur: '20px',
+  blur: 20,
 };
