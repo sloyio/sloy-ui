@@ -5,22 +5,26 @@ import { rgba } from 'polished';
 interface AccordionProps {
   color: string;
   opacity: number;
+  blur: boolean;
 }
 
 const getBackgroundStyle: StyleFunction<AccordionProps> = ({
   theme,
-  color, // в таком случае это проп компонента аккордион
-  opacity, // в таком случае это проп компонента аккордион
-  // но возможно тебе нужна именно тема, типа theme.card.opacity
-  // и тогда аргументы color и opacity можно будет удалить
+  color,
+  opacity,
+  blur,
 }) => {
   const selectedColor = theme.colors.background[color];
   const selectedOpacity = theme.opacity[opacity];
 
-  if (theme.blur > 0) {
+  if (blur) {
     return `
       background-color: ${rgba(selectedColor, selectedOpacity)};
-      backdrop-filter: blur(${theme.blur}px);
+      backdrop-filter: blur(20px);
+    `;
+  } else if (selectedOpacity < 1) {
+    return `
+      background-color: ${rgba(selectedColor, selectedOpacity)};
     `;
   }
 
@@ -40,7 +44,12 @@ const Wrapper = styled.label<AccordionProps>`
   border-radius: ${({ theme }) => theme.size.s};
   &:hover {
     ${({ theme }) =>
-      getBackgroundStyle({ theme, color: 'secondary', opacity: 'secondary' })};
+      getBackgroundStyle({
+        theme,
+        color: 'secondary',
+        opacity: 'secondary',
+        blur: false,
+      })};
   }
 `;
 const Content = styled.div`
@@ -86,10 +95,6 @@ export interface ListGridProps {
 export const ListGrid = styled.div<ListGridProps>`
   display: flex;
   flex-direction: column;
-  // gap: ${({ verticalGap = 16 }) => css`
-    //   ${verticalGap}px
-    //
-  `};
 `;
 
 export function ListGridItem({

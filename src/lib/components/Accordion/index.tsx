@@ -18,22 +18,26 @@ interface Props extends ICheckboxState {
 interface AccordionProps {
   color: string;
   opacity: number;
+  blur: boolean;
 }
 
 const getBackgroundStyle: StyleFunction<AccordionProps> = ({
   theme,
-  color, // в таком случае это проп компонента аккордион
-  opacity, // в таком случае это проп компонента аккордион
-  // но возможно тебе нужна именно тема, типа theme.card.opacity
-  // и тогда аргументы color и opacity можно будет удалить
+  color,
+  opacity,
+  blur,
 }) => {
   const selectedColor = theme.colors.background[color];
   const selectedOpacity = theme.opacity[opacity];
 
-  if (theme.blur > 0) {
+  if (blur) {
     return `
       background-color: ${rgba(selectedColor, selectedOpacity)};
-      backdrop-filter: blur(${theme.blur}px);
+      backdrop-filter: blur(20px);
+    `;
+  } else if (selectedOpacity < 1) {
+    return `
+      background-color: ${rgba(selectedColor, selectedOpacity)};
     `;
   }
 
@@ -42,10 +46,7 @@ const getBackgroundStyle: StyleFunction<AccordionProps> = ({
   `;
 };
 
-const Wrapper = styled.label<{
-  $opened?: boolean;
-  AccordionProps;
-}>`
+const Wrapper = styled.label<AccordionProps & { $opened?: boolean }>`
   display: flex;
   font-size: ${({ theme }) => theme.size.xl};
   line-height: ${({ theme }) => theme.size.xxl};
@@ -58,17 +59,32 @@ const Wrapper = styled.label<{
   transition: background-color 0.05s ease-out;
   &:hover {
     ${({ theme }) =>
-      getBackgroundStyle({ theme, color: 'secondary', opacity: 'hover' })};
+      getBackgroundStyle({
+        theme,
+        color: 'secondary',
+        opacity: 'hover',
+        blur: false,
+      })};
   }
   &:active {
     ${({ theme }) =>
-      getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
+      getBackgroundStyle({
+        theme,
+        color: 'tertiary',
+        opacity: 'secondary',
+        blur: false,
+      })};
   }
   ${({ $opened }) =>
     $opened &&
     css`
       ${({ theme }) =>
-        getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
+        getBackgroundStyle({
+          theme,
+          color: 'tertiary',
+          opacity: 'secondary',
+          blur: false,
+        })};
       border-radius: ${({ theme }) => theme.size.m}
         ${({ theme }) => theme.size.m} 0 0;
     `}
@@ -98,13 +114,19 @@ const Postfix = styled.div`
 
 const Container = styled.div``;
 
-const Body = styled.div<{
-  $horizontalGap: Gap;
-  $verticalGap: Gap;
-  AccordionProps;
-}>`
+const Body = styled.div<
+  AccordionProps & {
+    $horizontalGap: Gap;
+    $verticalGap: Gap;
+  }
+>`
   ${({ theme }) =>
-    getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
+    getBackgroundStyle({
+      theme,
+      color: 'tertiary',
+      opacity: 'secondary',
+      blur: false,
+    })};
   border-radius: 0 0 ${({ theme }) => theme.size.m}
     ${({ theme }) => theme.size.m};
   padding: 0 ${({ theme }) => theme.size.s} ${({ theme }) => theme.size.s};
@@ -157,7 +179,12 @@ export const Accordion = styled.div<AccordionProps>`
   gap: ${({ theme }) => theme.size.s};
   overflow: auto;
   ${({ theme }) =>
-    getBackgroundStyle({ theme, color: 'primary', opacity: 'primary' })};
+    getBackgroundStyle({
+      theme,
+      color: 'primary',
+      opacity: 'primary',
+      blur: true,
+    })};
 
   ${Container} {
     border-radius: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m}

@@ -72,5 +72,4 @@ export const sloyTheme: DefaultTheme = {
     xl: '16px',
     xxl: '20px',
   },
-  blur: 20,
 };
