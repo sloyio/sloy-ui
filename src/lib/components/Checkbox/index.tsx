@@ -31,7 +31,7 @@ const Label = styled.label<{ $hasChildren?: boolean }>`
   svg,
   rect,
   path {
-    transition: transform 0.2s;
+    transition: transform 0.1s;
   }
 
   /* Remove hover effect on touch screen */
