@@ -1,5 +1,5 @@
 import { ReactNode, forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, StyleFunction } from 'styled-components';
 import { rgba } from 'polished';
 import { Switch } from '../Switch';
 import { ICheckboxState } from '../../types/ICheckboxState';
@@ -15,7 +15,37 @@ interface Props extends ICheckboxState {
   horizontalGap?: Gap;
 }
 
-const Wrapper = styled.label<{ $opened?: boolean }>`
+interface AccordionProps {
+  color: string;
+  opacity: number;
+}
+
+const getBackgroundStyle: StyleFunction<AccordionProps> = ({
+  theme,
+  color, // в таком случае это проп компонента аккордион
+  opacity, // в таком случае это проп компонента аккордион
+  // но возможно тебе нужна именно тема, типа theme.card.opacity
+  // и тогда аргументы color и opacity можно будет удалить
+}) => {
+  const selectedColor = theme.colors.background[color];
+  const selectedOpacity = theme.opacity[opacity];
+
+  if (theme.blur > 0) {
+    return `
+      background-color: ${rgba(selectedColor, selectedOpacity)};
+      backdrop-filter: blur(${theme.blur}px);
+    `;
+  }
+
+  return `
+    background-color: ${selectedColor};
+  `;
+};
+
+const Wrapper = styled.label<{
+  $opened?: boolean;
+  AccordionProps;
+}>`
   display: flex;
   font-size: ${({ theme }) => theme.size.xl};
   line-height: ${({ theme }) => theme.size.xxl};
@@ -25,18 +55,22 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
   border-radius: ${({ theme }) => theme.size.m};
   user-select: none;
   cursor: pointer;
-  transition: background-color .05s ease-out;
+  transition: background-color 0.05s ease-out;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.background.secondary};
+    ${({ theme }) =>
+      getBackgroundStyle({ theme, color: 'secondary', opacity: 'hover' })};
   }
   &:active {
-    background-color: ${({ theme }) => theme.colors.background.tertiary};
+    ${({ theme }) =>
+      getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
   }
   ${({ $opened, theme }) =>
     $opened &&
     css`
-      background-color: ${theme.colors.background.tertiary};
-      border-radius: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m} 0 0;
+      ${({ theme }) =>
+        getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
+      border-radius: ${({ theme }) => theme.size.m}
+        ${({ theme }) => theme.size.m} 0 0;
     `}
 `;
 const Content = styled.div`
@@ -50,7 +84,7 @@ const TitleWrapper = styled.div`
   gap: ${({ theme }) => theme.size.s};
 `;
 const Title = styled.span`
-  font-weight: 500;
+  font-weight: 400;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
@@ -67,8 +101,10 @@ const Container = styled.div``;
 const Body = styled.div<{
   $horizontalGap: Gap;
   $verticalGap: Gap;
+  AccordionProps;
 }>`
-  background-color: ${({ theme }) => theme.colors.background.tertiary};
+  ${({ theme }) =>
+    getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
   border-radius: 0 0 8px 8px;
   padding: ${({ $horizontalGap, $verticalGap }) => css`
     ${$verticalGap}px
@@ -117,38 +153,23 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
   },
 );
 
-// function getBackgroundStyle({ theme }, color, opacity) {
-//   const selectedColor = theme.colors.background[color];
-//
-//   if (theme.blur > 0) {
-//     return `
-//       background-color: ${rgba(selectedColor, opacity)};
-//       backdrop-filter: blur(${theme.blur});
-//     `
-//   }
-//
-//   return `
-//     background-color: ${selectedColor};
-//   `
-// }
-
-
-export const Accordion = styled.div`
+export const Accordion = styled.div<AccordionProps>`
   display: flex;
   flex-direction: column;
   border-radius: ${({ theme }) => theme.size.xl};
   padding: ${({ theme }) => theme.size.m};
   gap: ${({ theme }) => theme.size.s};
-  background-color: ${({ theme }) => theme.colors.background.primary};
-  backdrop-filter: blur(20px);
   overflow: auto;
-  ${'' /* ${getBackgroundStyle({ theme }, 'primary', 0.7)}; */}
+  ${({ theme }) =>
+    getBackgroundStyle({ theme, color: 'primary', opacity: 'primary' })};
 
   ${Container} {
-    border-radius: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m} 0 0;
+    border-radius: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m}
+      0 0;
   }
 
   ${Container}:last-child {
-    border-radius: 0 0 ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m};
+    border-radius: 0 0 ${({ theme }) => theme.size.m}
+      ${({ theme }) => theme.size.m};
   }
 `;
