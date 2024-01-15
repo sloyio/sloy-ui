@@ -1,19 +1,46 @@
 import { ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, StyleFunction } from 'styled-components';
+import { rgba } from 'polished';
 
-const Wrapper = styled.label`
+interface AccordionProps {
+  color: string;
+  opacity: number;
+}
+
+const getBackgroundStyle: StyleFunction<AccordionProps> = ({
+  theme,
+  color, // в таком случае это проп компонента аккордион
+  opacity, // в таком случае это проп компонента аккордион
+  // но возможно тебе нужна именно тема, типа theme.card.opacity
+  // и тогда аргументы color и opacity можно будет удалить
+}) => {
+  const selectedColor = theme.colors.background[color];
+  const selectedOpacity = theme.opacity[opacity];
+
+  if (theme.blur > 0) {
+    return `
+      background-color: ${rgba(selectedColor, selectedOpacity)};
+      backdrop-filter: blur(${theme.blur}px);
+    `;
+  }
+
+  return `
+    background-color: ${selectedColor};
+  `;
+};
+
+const Wrapper = styled.label<AccordionProps>`
   display: flex;
   font-size: 14px;
   line-height: 18px;
   user-select: none;
   gap: ${({ theme }) => theme.size.m};
   cursor: pointer;
-  padding: ${({ theme }) => theme.size.m} 0;
-  &:first-child {
-    padding: 0 0 ${({ theme }) => theme.size.m};
-  }
-  &:last-child {
-    padding: ${({ theme }) => theme.size.m} 0 0;
+  padding: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.m};
+  border-radius: ${({ theme }) => theme.size.s};
+  &:hover {
+    ${({ theme }) =>
+      getBackgroundStyle({ theme, color: 'secondary', opacity: 'secondary' })};
   }
 `;
 const Content = styled.div`
@@ -60,8 +87,9 @@ export const ListGrid = styled.div<ListGridProps>`
   display: flex;
   flex-direction: column;
   // gap: ${({ verticalGap = 16 }) => css`
-  //   ${verticalGap}px
-  // `};
+    //   ${verticalGap}px
+    //
+  `};
 `;
 
 export function ListGridItem({

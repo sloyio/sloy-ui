@@ -107,8 +107,7 @@ const Body = styled.div<{
     getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
   border-radius: 0 0 ${({ theme }) => theme.size.m}
     ${({ theme }) => theme.size.m};
-  padding: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.l}
-    ${({ theme }) => theme.size.xl} ${({ theme }) => theme.size.l};
+  padding: 0 ${({ theme }) => theme.size.s} ${({ theme }) => theme.size.s};
   &:empty {
     display: none;
   }
