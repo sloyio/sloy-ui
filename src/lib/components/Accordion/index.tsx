@@ -64,7 +64,7 @@ const Wrapper = styled.label<{
     ${({ theme }) =>
       getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
   }
-  ${({ $opened, theme }) =>
+  ${({ $opened }) =>
     $opened &&
     css`
       ${({ theme }) =>
@@ -105,13 +105,10 @@ const Body = styled.div<{
 }>`
   ${({ theme }) =>
     getBackgroundStyle({ theme, color: 'tertiary', opacity: 'secondary' })};
-  border-radius: 0 0 8px 8px;
-  padding: ${({ $horizontalGap, $verticalGap }) => css`
-    ${$verticalGap}px
-    ${$horizontalGap}px
-    ${$verticalGap + 16}px
-    ${$horizontalGap}px
-  `};
+  border-radius: 0 0 ${({ theme }) => theme.size.m}
+    ${({ theme }) => theme.size.m};
+  padding: ${({ theme }) => theme.size.m} ${({ theme }) => theme.size.l}
+    ${({ theme }) => theme.size.xl} ${({ theme }) => theme.size.l};
   &:empty {
     display: none;
   }
