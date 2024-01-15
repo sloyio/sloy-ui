@@ -6,8 +6,15 @@ const Wrapper = styled.label`
   font-size: 14px;
   line-height: 18px;
   user-select: none;
-  gap: 8px;
+  gap: ${({ theme }) => theme.size.m};
   cursor: pointer;
+  padding: ${({ theme }) => theme.size.m} 0;
+  &:first-child {
+    padding: 0 0 ${({ theme }) => theme.size.m};
+  }
+  &:last-child {
+    padding: ${({ theme }) => theme.size.m} 0 0;
+  }
 `;
 const Content = styled.div`
   width: 100%;
@@ -52,9 +59,9 @@ export interface ListGridProps {
 export const ListGrid = styled.div<ListGridProps>`
   display: flex;
   flex-direction: column;
-  gap: ${({ verticalGap = 16 }) => css`
-    ${verticalGap}px
-  `};
+  // gap: ${({ verticalGap = 16 }) => css`
+  //   ${verticalGap}px
+  // `};
 `;
 
 export function ListGridItem({
