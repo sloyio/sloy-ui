@@ -19,17 +19,10 @@ declare module 'styled-components' {
         tertiary: string;
       };
     };
-    accordion: {
+    background: {
       blur: number;
       opacity: {
         default: number;
-        hover: number;
-        active: number;
-      };
-    };
-    listGrid: {
-      blur: number;
-      opacity: {
         hover: number;
         active: number;
       };

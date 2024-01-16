@@ -23,17 +23,10 @@ export const sloyTheme: DefaultTheme = deepmerge<DefaultTheme>(defaultTheme, {
     fontFamily: '-apple-system, BlinkMacSystemFont, Inter, sans-serif',
   },
   colors: sloyColorsTokens,
-  accordion: {
+  background: {
     blur: 20,
     opacity: {
       default: 0.7,
-      hover: 0.2,
-      active: 0.1,
-    },
-  },
-  listGrid: {
-    blur: 20,
-    opacity: {
       hover: 0.2,
       active: 0.1,
     },

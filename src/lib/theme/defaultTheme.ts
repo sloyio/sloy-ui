@@ -30,17 +30,10 @@ export const defaultTheme: DefaultTheme = {
     fontFamily: `'Iset Sans', sans-serif`,
   },
   colors: ekbColorsTokens,
-  accordion: {
+  background: {
     blur: 0,
     opacity: {
       default: 1,
-      hover: 1,
-      active: 1,
-    },
-  },
-  listGrid: {
-    blur: 0,
-    opacity: {
       hover: 1,
       active: 1,
     },

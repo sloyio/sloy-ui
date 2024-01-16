@@ -3,6 +3,7 @@ export * from './AnimatedLogo';
 export * from './Accordion';
 export * from './RangeHistogram';
 export * from './SheetModal';
+export * from './Sidebar';
 export * from './Card';
 
 export * from './Button';

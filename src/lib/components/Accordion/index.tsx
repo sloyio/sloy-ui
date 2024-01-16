@@ -14,8 +14,8 @@ export const Accordion = styled.div`
 
     ${getBackgroundStyle({
       color: theme.colors.background.primary,
-      opacity: theme.accordion.opacity.default,
-      blur: theme.accordion.blur,
+      opacity: theme.background.opacity.default,
+      blur: theme.background.blur,
     })};
 
     ${Container} {

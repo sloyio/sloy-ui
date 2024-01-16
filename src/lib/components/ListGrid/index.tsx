@@ -15,13 +15,13 @@ const Wrapper = styled.label`
     &:hover {
       ${getBackgroundStyle({
         color: theme.colors.background.secondary,
-        opacity: theme.listGrid.opacity.hover,
+        opacity: theme.background.opacity.hover,
       })};
     }
     &:active {
       ${getBackgroundStyle({
         color: theme.colors.background.tertiary,
-        opacity: theme.listGrid.opacity.active,
+        opacity: theme.background.opacity.active,
       })};
     }
   `}

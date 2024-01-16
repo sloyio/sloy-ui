@@ -21,14 +21,14 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
   ${({ theme, $opened }) => {
     const activeStyle = getBackgroundStyle({
       color: theme.colors.background.tertiary,
-      opacity: theme.accordion.opacity.active,
+      opacity: theme.background.opacity.active,
     });
 
     return css`
       &:hover {
         ${getBackgroundStyle({
           color: theme.colors.background.secondary,
-          opacity: theme.accordion.opacity.hover,
+          opacity: theme.background.opacity.hover,
         })};
       }
 
@@ -88,7 +88,7 @@ const Body = styled.div`
 
     ${getBackgroundStyle({
       color: theme.colors.background.tertiary,
-      opacity: theme.accordion.opacity.active,
+      opacity: theme.background.opacity.active,
     })}
   `};
 

@@ -1,6 +1,5 @@
 import { ReactNode, forwardRef, useMemo } from 'react';
 import styled, { css } from 'styled-components';
-import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 import { Divider } from '../Divider';
 import { AnimatedLogo } from '../AnimatedLogo';
 import { removeDuplicatedDividers } from './utils/removeDuplicatedDividers';
@@ -31,11 +30,6 @@ const Wrapper = styled.div`
 
   ${({ theme }) => css`
     border-radius: ${theme.size.xl};
-    ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: theme.accordion.opacity.default,
-      blur: theme.accordion.blur,
-    })};
   `}
 `;
 const Header = styled.div``;
