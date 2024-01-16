@@ -25,12 +25,8 @@ const Template: StoryFn<typeof Button> = (args: ButtonProps) => {
       <Button {...args} type={ButtonType.DEFAULT}>
         Default
       </Button>
-      <Button
-        {...args}
-        type={ButtonType.CONTRAST}
-        href="https://map.ekaterinburg.city/"
-      >
-        Contrast
+      <Button {...args} type={ButtonType.CONTRAST}>
+        Default
       </Button>
     </div>
   );

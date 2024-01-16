@@ -31,7 +31,7 @@ const Label = styled.label<{ $hasChildren?: boolean }>`
   svg,
   rect,
   path {
-    transition: transform 0.2s;
+    transition: transform 0.1s;
   }
 
   /* Remove hover effect on touch screen */
@@ -85,6 +85,7 @@ export function Checkbox({
             strokeMiterlimit="3.8637"
             strokeLinecap="square"
             strokeLinejoin="round"
+            fill="none"
           />
         )}
         {props.isIndeterminate && (

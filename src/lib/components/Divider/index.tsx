@@ -10,7 +10,8 @@ const StyledDivider = styled.div<{
   margin: ${({ $verticalGap = 16 }) => css`
     ${$verticalGap}px 0
   `};
-  border: 1px solid #3c4669;
+  border-top: 1px solid;
+  border-color: ${({ theme }) => theme.colors.elements.tertiary};
 `;
 
 export function Divider({ verticalGap }: DividerProps) {

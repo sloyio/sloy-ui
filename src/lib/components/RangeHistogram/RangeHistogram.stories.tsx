@@ -1,5 +1,6 @@
 import { StoryFn } from '@storybook/react';
 import { RangeHistogram } from '.';
+import { RangeHistogramProps } from './RangeHistogram';
 
 export default {
   title: 'Atoms/RangeHistogram',
@@ -7,7 +8,7 @@ export default {
   argTypes: {},
 };
 
-const Template: StoryFn<typeof RangeHistogram> = (args: any) => {
+export function RangeHistorgramDemo(props: Partial<RangeHistogramProps>) {
   const rangeData = [
     {
       from: 1723,
@@ -67,10 +68,14 @@ const Template: StoryFn<typeof RangeHistogram> = (args: any) => {
       height={128}
       defaultMin={1723}
       defaultMax={2024}
-      {...args}
+      {...props}
     />
   );
-};
+}
+
+const Template: StoryFn<typeof RangeHistogram> = (args) => (
+  <RangeHistorgramDemo {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {};

@@ -34,8 +34,24 @@ export const parameters = {
     default: 'dark',
     values: [
       {
+        name: 'map',
+        value: 'url(./desktop.jpg)',
+      },
+      {
         name: 'dark',
         value: '#141D34',
+      },
+      {
+        name: 'black',
+        value: '#000',
+      },
+      {
+        name: 'white',
+        value: '#fff',
+      },
+      {
+        name: 'grey',
+        value: '#cdd5e7',
       },
     ],
   },
