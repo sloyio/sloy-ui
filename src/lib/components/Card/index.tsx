@@ -1,5 +1,6 @@
 import { ReactNode, forwardRef, useMemo } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 import { Divider } from '../Divider';
 import { AnimatedLogo } from '../AnimatedLogo';
 import { removeDuplicatedDividers } from './utils/removeDuplicatedDividers';
@@ -27,6 +28,15 @@ const POPUP_VERTICAL_PADDING = 16;
 
 const Wrapper = styled.div`
   padding: ${POPUP_VERTICAL_PADDING}px ${POPUP_HORIZONTAL_PADDING}px;
+
+  ${({ theme }) => css`
+    border-radius: ${theme.size.xl};
+    ${getBackgroundStyle({
+      color: theme.colors.background.primary,
+      opacity: theme.accordion.opacity.default,
+      blur: theme.accordion.blur,
+    })};
+  `}
 `;
 const Header = styled.div``;
 const Cover = styled.img`
