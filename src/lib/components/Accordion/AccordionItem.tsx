@@ -87,9 +87,8 @@ const Body = styled.div`
     padding: 0 ${theme.size.s} ${theme.size.s};
 
     ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: theme.accordion.opacity.default,
-      blur: theme.accordion.blur,
+      color: theme.colors.background.tertiary,
+      opacity: theme.accordion.opacity.active,
     })}
   `};
 
