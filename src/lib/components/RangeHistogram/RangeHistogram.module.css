@@ -10,9 +10,9 @@
 
 .histogram {
   position: relative;
-  padding-top: 32px;
+  padding-top: 48px;
   padding-right: var(--histogram-padding-x);
-  padding-bottom: 0;
+  padding-bottom: 8px;
   padding-left: var(--histogram-padding-x);
   box-sizing: content-box;
   user-select: none;

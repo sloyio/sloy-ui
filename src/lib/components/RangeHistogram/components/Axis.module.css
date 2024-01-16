@@ -31,12 +31,12 @@
 
 @media screen and (width >= 768px) {
   .axis {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 
 @media screen and (width >= 1200px) {
   .axis {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
