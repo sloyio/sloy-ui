@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 import { Divider } from '../Divider';
 import { AnimatedLogo } from '../AnimatedLogo';
 import { removeDuplicatedDividers } from './utils/removeDuplicatedDividers';
+import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
+import React from 'react';
 
 type DividerCardBlock = { type: 'divider' };
 type ValueCardBlock = { type: string; title?: string; value: ReactNode };
@@ -30,6 +32,12 @@ const Wrapper = styled.div`
 
   ${({ theme }) => css`
     border-radius: ${theme.size.xl};
+
+    ${getBackgroundStyle({
+      color: theme.colors.background.primary,
+      opacity: theme.background.opacity.default,
+      blur: theme.background.blur,
+    })};
   `}
 `;
 const Header = styled.div``;
