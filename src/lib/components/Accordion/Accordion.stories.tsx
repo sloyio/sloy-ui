@@ -4,6 +4,7 @@ import { Accordion, AccordionItem } from '.';
 import { Checkbox, useCheckboxState } from '../Checkbox';
 import { ListGrid, ListGridItem } from '../ListGrid';
 import { RangeHistorgramDemo } from '../RangeHistogram/RangeHistogram.stories';
+import React from 'react';
 
 export default {
   title: 'Organisms/Accordion',

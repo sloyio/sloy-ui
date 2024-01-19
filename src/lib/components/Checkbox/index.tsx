@@ -2,6 +2,7 @@ import { Children, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { useFocusRing, VisuallyHidden } from 'react-aria';
 import { ICheckboxState } from '../../types/ICheckboxState';
+import React from 'react';
 
 export interface CheckboxProps extends ICheckboxState {
   children?: ReactNode;
