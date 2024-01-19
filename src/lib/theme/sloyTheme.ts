@@ -31,4 +31,22 @@ export const sloyTheme: DefaultTheme = deepmerge<DefaultTheme>(defaultTheme, {
       active: 0.1,
     },
   },
+  text: {
+    color: {
+      primary: '#fff',
+      secondary: '#9baac3',
+    },
+  },
+  buttons: {
+    color: {
+      default: '#6686f0',
+      hover: '#6e89dd',
+      active: '#6e89dd',
+    },
+    opacity: {
+      default: 0.2,
+      hover: 0.4,
+      active: 0.5,
+    },
+  },
 });
