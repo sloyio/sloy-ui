@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { ICheckboxState } from '../../types/ICheckboxState';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 import { Switch } from '../Switch';
+import React from 'react';
 
 interface Props extends ICheckboxState {
   title: ReactNode;
