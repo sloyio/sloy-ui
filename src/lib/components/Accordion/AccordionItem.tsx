@@ -50,6 +50,9 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
     ${$opened &&
     css`
       border-radius: ${theme.size.m} ${theme.size.m} 0 0;
+      ${SubTitle} {
+        opacity: 1;
+      }
     `}
   `}
 `;
@@ -73,11 +76,13 @@ const Title = styled.span`
 `;
 
 const SubTitle = styled.span`
-  color: #9baac3;
+  color: ${({ theme }) => theme.text.color.secondary};
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
 `;
 
 const Postfix = styled.div`
-  color: #9baac3;
+  color: ${({ theme }) => theme.text.color.secondary};
 `;
 
 export const Container = styled.div``;
