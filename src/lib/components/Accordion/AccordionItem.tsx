@@ -51,6 +51,7 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
     css`
       border-radius: ${theme.size.m} ${theme.size.m} 0 0;
       ${SubTitle} {
+        transform: translateX(0);
         opacity: 1;
       }
     `}
@@ -78,7 +79,8 @@ const Title = styled.span`
 const SubTitle = styled.span`
   color: ${({ theme }) => theme.text.color.secondary};
   opacity: 0;
-  transition: opacity 0.15s ease-out;
+  transform: translateX(-2px);
+  transition: all 0.15s ease-out;
 `;
 
 const Postfix = styled.div`
