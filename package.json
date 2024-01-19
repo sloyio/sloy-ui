@@ -2,7 +2,7 @@
   "name": "sloy-ui",
   "license": "Apache-2.0",
   "type": "module",
-  "version": "0.0.1-rc.3",
+  "version": "0.0.1-rc.4",
   "scripts": {
     "start": "storybook dev -p 6006",
     "build": "tsc && vite build",
@@ -29,6 +29,14 @@
     "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
+    },
+    "./sloy.css": {
+      "import": "./dist/sloy.css",
+      "require": "./dist/sloy.css"
+    },
+    "./fonts.css": {
+      "import": "./dist/fonts.css",
+      "require": "./dist/fonts.css"
     }
   },
   "peerDependencies": {

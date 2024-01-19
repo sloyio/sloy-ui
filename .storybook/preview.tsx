@@ -1,13 +1,7 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { defaultTheme, sloyTheme } from '../src/lib/theme';
-
-const GlobalStyles = createGlobalStyle`
-  body {
-    font-family: ${({ theme }) => theme.global.fontFamily};
-    color: ${({ theme }) => theme.colors.text.primary};
-  }
-`;
+import { GlobalStyles } from '../src/lib/createGlobalStyles'
 
 export const decorators = [
   withThemeFromJSXProvider({

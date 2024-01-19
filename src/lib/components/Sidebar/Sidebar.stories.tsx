@@ -1,5 +1,6 @@
 import { StoryFn } from '@storybook/react';
 import { SidebarContent, SidebarProps } from '.';
+import { CardDemo } from '../Card/Card.stories';
 
 export default {
   title: 'Atoms/Sidebar',
@@ -7,7 +8,11 @@ export default {
 };
 
 const Template: StoryFn<typeof SidebarContent> = (args: SidebarProps) => {
-  return <SidebarContent {...args}>123123</SidebarContent>;
+  return (
+    <SidebarContent {...args}>
+      <CardDemo />
+    </SidebarContent>
+  );
 };
 
 export const Default = Template.bind({});

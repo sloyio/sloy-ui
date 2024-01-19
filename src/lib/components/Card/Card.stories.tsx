@@ -12,7 +12,7 @@ export default {
   },
 };
 
-const Template: StoryFn<typeof Card> = (args: CardProps) => {
+export const CardDemo: StoryFn<typeof Card> = (args: CardProps) => {
   return (
     <Card
       title="Название объекта"
@@ -52,5 +52,5 @@ const Template: StoryFn<typeof Card> = (args: CardProps) => {
   );
 };
 
-export const Default = Template.bind({});
+export const Default = CardDemo.bind({});
 Default.args = {};

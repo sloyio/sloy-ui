@@ -63,6 +63,7 @@ const Content = styled.div`
   gap: ${({ theme }) => theme.size.xs};
   display: flex;
   flex-direction: column;
+  min-width: 0;
 `;
 
 const TitleWrapper = styled.div`
@@ -72,6 +73,7 @@ const TitleWrapper = styled.div`
 
 const Title = styled.span`
   font-weight: 400;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;

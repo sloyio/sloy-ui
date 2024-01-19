@@ -35,6 +35,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
 `;
 
 const TitleWrapper = styled.div`
@@ -48,6 +49,7 @@ const Title = styled.span`
   font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const SubTitle = styled.span`

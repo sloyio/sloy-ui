@@ -32,12 +32,6 @@ const Wrapper = styled.div`
 
   ${({ theme }) => css`
     border-radius: ${theme.size.xl};
-
-    ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: theme.background.opacity.default,
-      blur: theme.background.blur,
-    })};
   `}
 `;
 const Header = styled.div``;

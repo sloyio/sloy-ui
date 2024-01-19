@@ -73,9 +73,9 @@ export function RangeHistorgramDemo(props: Partial<RangeHistogramProps>) {
   );
 }
 
-const Template: StoryFn<typeof RangeHistogram> = (args) => (
-  <RangeHistorgramDemo {...args} />
-);
+const Template: StoryFn<typeof RangeHistogram> = (
+  args: RangeHistogramProps,
+) => <RangeHistorgramDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};

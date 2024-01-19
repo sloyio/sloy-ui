@@ -45,7 +45,7 @@ const Wrapper = styled.div`
   ${({ theme }) =>
     getBackgroundStyle({
       color: theme.colors.background.primary,
-      opacity: theme.background.opacity.hover,
+      opacity: theme.background.opacity.default,
       blur: theme.background.blur,
     })};
 `;

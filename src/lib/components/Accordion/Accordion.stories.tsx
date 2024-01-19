@@ -24,7 +24,7 @@ function ItemCheckbox() {
   return <Checkbox {...state} />;
 }
 
-const Template: StoryFn<typeof Accordion> = (args) => {
+const Template: StoryFn<typeof Accordion> = () => {
   const rows = [
     {
       id: 1,
@@ -50,7 +50,7 @@ const Template: StoryFn<typeof Accordion> = (args) => {
 
   return (
     <div style={{ maxWidth: 400 }}>
-      <Accordion {...args}>
+      <Accordion>
         <StatefulAccordionItem title="Checkboxes" subTitle="123">
           <ListGrid>
             {rows.map((item) => (
