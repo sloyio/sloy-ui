@@ -42,6 +42,7 @@ export const defaultTheme: DefaultTheme = {
     color: {
       primary: '#fff',
       secondary: '#9baac3',
+      tertiary: '#6e7c94',
     },
   },
   buttons: {
