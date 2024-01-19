@@ -1,5 +1,7 @@
 import { ReactNode, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
+import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
+import React from 'react';
 
 export enum ButtonType {
   ACCENT = 'accent',
@@ -41,14 +43,30 @@ function getTypeStyles({ $type = ButtonType.ACCENT }: { $type: ButtonType }) {
       `;
     case ButtonType.DEFAULT:
       return css`
-        background: rgba(60, 70, 90, 0.5);
-        color: #9baac3;
+        ${({ theme }) => css`
+          ${getBackgroundStyle({
+            color: theme.buttons.color.default,
+            opacity: theme.buttons.opacity.default,
+          })};
+          color: ${theme.text.color.secondary};
+        `}
+
         &:hover {
-          background: #49556f;
+          ${({ theme }) => css`
+            ${getBackgroundStyle({
+              color: theme.buttons.color.hover,
+              opacity: theme.buttons.opacity.hover,
+            })};
+          `}
         }
+
         &:active {
-          color: #b2c3df;
-          background: #606f8e;
+          ${({ theme }) => css`
+            ${getBackgroundStyle({
+              color: theme.buttons.color.active,
+              opacity: theme.buttons.opacity.active,
+            })};
+          `}
         }
       `;
     case ButtonType.CONTRAST:

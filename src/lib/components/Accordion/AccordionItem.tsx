@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { ICheckboxState } from '../../types/ICheckboxState';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 import { Switch } from '../Switch';
+import React from 'react';
 
 interface Props extends ICheckboxState {
   title: ReactNode;
@@ -49,6 +50,10 @@ const Wrapper = styled.label<{ $opened?: boolean }>`
     ${$opened &&
     css`
       border-radius: ${theme.size.m} ${theme.size.m} 0 0;
+      ${SubTitle} {
+        transform: translateX(0);
+        opacity: 1;
+      }
     `}
   `}
 `;
@@ -58,6 +63,7 @@ const Content = styled.div`
   gap: ${({ theme }) => theme.size.xs};
   display: flex;
   flex-direction: column;
+  min-width: 0;
 `;
 
 const TitleWrapper = styled.div`
@@ -67,16 +73,20 @@ const TitleWrapper = styled.div`
 
 const Title = styled.span`
   font-weight: 400;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
 
 const SubTitle = styled.span`
-  color: #9baac3;
+  color: ${({ theme }) => theme.text.color.secondary};
+  opacity: 0;
+  transform: translateX(-2px);
+  transition: all 0.15s ease-out;
 `;
 
 const Postfix = styled.div`
-  color: #9baac3;
+  color: ${({ theme }) => theme.text.color.secondary};
 `;
 
 export const Container = styled.div``;

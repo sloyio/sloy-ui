@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 
 const Wrapper = styled.label`
   display: flex;
-  font-size: 14px;
+  align-items: flex-start;
+  font-size: 12px;
   line-height: 18px;
   user-select: none;
   cursor: pointer;
@@ -33,32 +35,46 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   gap: 8px;
+  justify-content: space-between;
 `;
 
 const Title = styled.span`
+  font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const SubTitle = styled.span`
-  color: #9baac3;
+  ${({ theme }) => css`
+    color: ${theme.text.color.primary};
+  `}
+  margin-top: 1px;
+  font-feature-settings: 'tnum';
 `;
 
 const Description = styled.div`
-  color: #9baac3;
+  ${({ theme }) => css`
+    color: ${theme.text.color.tertiary};
+  `}
 `;
 
 const Prefix = styled.div``;
 
 const Postfix = styled.div`
-  color: #9baac3;
+  ${({ theme }) => css`
+    color: ${theme.text.color.tertiary};
+  `}
   white-space: nowrap;
+  margin-top: 1px;
+  font-feature-settings: 'tnum';
 `;
 
 interface Props {

@@ -5,7 +5,7 @@ React components for ekaterinburgdev projects
 ## Local server
 
 ```
-npm start
+pnpm start
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ Add sloy-ui/fonts.css
 ## Publish storybook
 
 ```
-npm run build-storybook
+pnpm run build-storybook
 
 # publish static files
 ```
@@ -29,9 +29,9 @@ npm run build-storybook
 If you want to test this library without tag publishing you can link the package:
 
 ```
-npm run build
+pnpm run build
 
-npm link
+pnpm link --global
 cd OTHER_PROJECT_WITH_THIS_PACKAGE
-npm link sloy-ui
+pnpm link --global sloy-ui
 ```

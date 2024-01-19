@@ -1,6 +1,7 @@
 import { StoryFn } from '@storybook/react';
 import { ListGrid, ListGridItem } from '.';
 import { Checkbox } from '../Checkbox';
+import React from 'react';
 
 export default {
   title: 'Atoms/ListGrid',
@@ -13,23 +14,23 @@ const Template: StoryFn<typeof ListGrid> = (args: any) => {
     {
       id: 1,
       title: 'Красная линия',
-      subTitle: '35',
+      subTitle: '56%',
       description: 'Маршрут по историческому центру города',
-      postfix: '56%',
+      postfix: '35',
     },
     {
       id: 2,
       title: 'Синяя линия',
-      subTitle: '11',
+      subTitle: '23%',
       description: 'Маршрут по местам, связанными c царской семьей',
-      postfix: '23%',
+      postfix: '11',
     },
     {
       id: 3,
       title: 'Title',
-      subTitle: '29',
+      subTitle: '31%',
       description: 'Арт-объекты фестиваля уличного искусства «Стенограффия»',
-      postfix: '31%',
+      postfix: '29',
     },
   ];
 

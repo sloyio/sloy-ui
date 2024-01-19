@@ -38,5 +38,24 @@ export const defaultTheme: DefaultTheme = {
       active: 1,
     },
   },
+  text: {
+    color: {
+      primary: '#fff',
+      secondary: '#9baac3',
+      tertiary: '#6e7c94',
+    },
+  },
+  buttons: {
+    color: {
+      default: '#2f395b',
+      hover: '#3c4669',
+      active: '#495478',
+    },
+    opacity: {
+      default: 1,
+      hover: 1,
+      active: 1,
+    },
+  },
   size,
 };
