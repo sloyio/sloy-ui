@@ -45,6 +45,7 @@
     "styled-components": "^6.1.6"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.26.8",
     "classnames": "^2.3.2",
     "deepmerge": "^4.3.1",
     "framer-motion": "^10.16.16",
