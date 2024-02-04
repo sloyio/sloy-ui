@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export interface DividerProps {
-  verticalGap?: 0 | 8 | 16;
+  verticalGap?: 0 | 4 | 8 | 16;
 }
 
 const StyledDivider = styled.div<{

@@ -1,5 +1,5 @@
 import { StoryFn } from '@storybook/react';
-import { ListGrid, ListGridItem } from '.';
+import { ListGrid, ListGridHeader, ListGridItem } from '.';
 import { Checkbox } from '../Checkbox';
 import React from 'react';
 
@@ -29,13 +29,20 @@ const Template: StoryFn<typeof ListGrid> = (args: any) => {
       id: 3,
       title: 'Title',
       subTitle: '31%',
-      description: 'Арт-объекты фестиваля уличного искусства «Стенограффия»',
       postfix: '29',
     },
   ];
 
   return (
     <ListGrid {...args}>
+      <ListGridHeader
+        prefix={<Checkbox />}
+        description="Количество"
+        subTitle="%"
+        postfix="шт."
+      >
+        Шапка
+      </ListGridHeader>
       {rows.map((item) => (
         <ListGridItem key={item.id} prefix={<Checkbox />} {...item}>
           {item.title}
