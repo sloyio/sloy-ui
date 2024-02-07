@@ -57,11 +57,12 @@ const SubTitle = styled.span`
   ${({ theme }) => css`
     color: ${theme.text.color.tertiary};
   `}
-  margin-top: 1px;
+  font-size: 14px;
   font-feature-settings: 'tnum';
 `;
 
 const Description = styled.div`
+  font-size: 14px;
   ${({ theme }) => css`
     color: ${theme.text.color.tertiary};
   `}
@@ -73,8 +74,8 @@ const Postfix = styled.div`
   ${({ theme }) => css`
     color: ${theme.text.color.primary};
   `}
+  font-size: 14px;
   white-space: nowrap;
-  margin-top: 1px;
   font-feature-settings: 'tnum';
 `;
 
