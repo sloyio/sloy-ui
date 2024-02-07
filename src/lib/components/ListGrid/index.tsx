@@ -153,7 +153,7 @@ export function ListGridHeader({
         {prefix && <Prefix>{prefix}</Prefix>}
         <HeaderContent>
           <HeaderTitleWrapper>
-            <Title>{children}</Title>
+            {children && <Title>{children}</Title>}
             {description && (
               <HeaderDescription>{description}</HeaderDescription>
             )}
