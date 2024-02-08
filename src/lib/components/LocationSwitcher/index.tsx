@@ -1,94 +1,83 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import useMenu from '../../hooks/useMenu';
 import { IDropdownItem } from '../../types/IDropdownItem';
-import Earth from '../Icon/Earth';
-import Popover from '../Popover';
+import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
+import { Button } from '../Button';
+import { Icon, IconType } from '../Icon';
+import Menu from '../Menu';
 import Content from './components/Content';
 
-const dropdownItems: IDropdownItem[] = [
-  {
-    country: 'Россия',
-    cities: [
-      {
-        id: 'ekaterinburg',
-        name: 'Екатеринбург',
-      },
-      {
-        id: 'chelyabinsk',
-        name: 'Челябинск',
-      },
-    ],
-  },
-  {
-    country: 'Армения',
-    cities: [
-      {
-        id: 'whole-country',
-        name: 'Вся страна',
-      },
-      {
-        id: 'erevan',
-        name: 'Ереван',
-      },
-    ],
-  },
-  {
-    country: 'Финляндия',
-    cities: [
-      {
-        id: 'helsinki',
-        name: 'Хельсинки',
-      },
-    ],
-  },
-] as const;
-
 interface Props {
+  items: IDropdownItem[];
   activeLocation: string;
   setActiveLocation: (location: string) => void;
 }
 
-const Button = styled.button<{ $isOpen: boolean }>`
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 16px;
-  display: flex;
-  height: 40px;
-  padding: 9px 12px 11px 8px;
-  align-items: center;
+const StyledButton = styled(Button)<{ $isOpen: boolean }>`
   gap: 4px;
-  cursor: pointer;
-  border-radius: 20px;
-  background-color: ${({ $isOpen }) =>
-    $isOpen ? 'rgba(96, 131, 255, 0.20);' : 'rgba(10, 13, 22, 0.1)'};
-  backdrop-filter: blur(25px);
-  @media (hover) {
-    &:hover {
-      background-color: rgba(96, 131, 255, 0.1);
+  ${({ theme, $isOpen }) => css`
+    background-color: ${$isOpen
+      ? getBackgroundStyle({
+          color: theme.buttons.color.active,
+          opacity: theme.buttons.opacity.active,
+        })
+      : getBackgroundStyle({
+          color: theme.buttons.color.default,
+          opacity: theme.buttons.opacity.default,
+        })};
+
+    @media (hover) {
+      &:hover {
+        background-color: ${getBackgroundStyle({
+          color: theme.buttons.color.hover,
+          opacity: theme.buttons.opacity.hover,
+        })};
+      }
     }
-  }
+  `}
 `;
 
 export default function LocationSwitcher({
+  items,
   activeLocation,
   setActiveLocation,
 }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const cities = dropdownItems.map((elem) => elem.cities).flat();
+  const cities = items.map((elem) => elem.cities).flat();
   const locationName = cities.find((elem) => elem.id === activeLocation)!.name;
 
+  const { setReference, getReferenceProps, ...props } = useMenu('top-start');
+
   return (
-    <Popover placement="top-start">
-      <Button $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-        <Earth />
+    <div>
+      <StyledButton
+        $isOpen={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+        ref={setReference}
+        rounded
+        {...getReferenceProps()}
+      >
+        <Icon type={IconType.Earth} />
         {locationName}
-      </Button>
-      <Content
-        items={dropdownItems}
-        activeLocation={activeLocation}
-        setActiveLocation={setActiveLocation}
-      />
-    </Popover>
+      </StyledButton>
+      <Menu {...props}>
+        <Content
+          items={items}
+          activeLocation={activeLocation}
+          setActiveLocation={setActiveLocation}
+        />
+      </Menu>
+    </div>
   );
 }
+
+// TODO:
+// Add popover.stories.tsx
+
+// styled-components has great theme provider that helps to get theme values from config.
+
+// ${({ theme }) => theme.text.color.secondary};
+// Please check AccordionItem component and theme/ folder
+
+// we can get values from theme like
