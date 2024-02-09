@@ -7,7 +7,7 @@ import { Divider } from '../Divider';
 const Wrapper = styled.label`
   display: flex;
   align-items: flex-start;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 18px;
   user-select: none;
   cursor: pointer;
@@ -46,7 +46,6 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.span`
-  font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -57,12 +56,11 @@ const SubTitle = styled.span`
   ${({ theme }) => css`
     color: ${theme.text.color.tertiary};
   `}
-  font-size: 14px;
   font-feature-settings: 'tnum';
 `;
 
 const Description = styled.div`
-  font-size: 14px;
+  font-size: 12px;
   ${({ theme }) => css`
     color: ${theme.text.color.tertiary};
   `}
@@ -74,7 +72,6 @@ const Postfix = styled.div`
   ${({ theme }) => css`
     color: ${theme.text.color.primary};
   `}
-  font-size: 14px;
   white-space: nowrap;
   font-feature-settings: 'tnum';
 `;
@@ -129,6 +126,7 @@ const HeaderTitleWrapper = styled(TitleWrapper)`
 `;
 
 const HeaderDescription = styled(Description)`
+  font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
