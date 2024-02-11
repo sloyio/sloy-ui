@@ -1,30 +1,28 @@
-import { FloatingFocusManager } from '@floating-ui/react';
 import { ReactNode } from 'react';
+import styled from 'styled-components';
+import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 
 interface Props {
-  isOpen: boolean;
-  context: any; // TODO: change this type
-  setFloating: () => any;
-  floatingStyles: object;
-  getFloatingProps: () => any;
   children: ReactNode;
 }
 
-export default function Menu({
-  isOpen,
-  context,
-  floatingStyles,
-  setFloating,
-  getFloatingProps,
-  children,
-}: Props) {
-  if (!isOpen) return;
+const Wrapper = styled.div`
+  display: flex;
+  padding: 12px 8px 8px 8px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: start;
+  min-width: 243px;
+  transition: all 0.15s ease-out;
+  border-radius: 16px;
+  ${({ theme }) =>
+    getBackgroundStyle({
+      color: theme.colors.background.tertiary,
+      opacity: 0.2,
+      blur: 50,
+    })};
+`;
 
-  return (
-    <FloatingFocusManager context={context} modal={false}>
-      <div ref={setFloating} style={floatingStyles} {...getFloatingProps()}>
-        {children}
-      </div>
-    </FloatingFocusManager>
-  );
+export default function Menu({ children }: Props) {
+  return <Wrapper>{children}</Wrapper>;
 }

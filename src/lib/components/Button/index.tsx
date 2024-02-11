@@ -163,6 +163,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type = ButtonType.DEFAULT,
       href,
       children,
+      className,
       onClick,
       fullWidth,
     },
@@ -187,7 +188,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     return (
-      <BaseButton {...allProps} ref={ref}>
+      <BaseButton {...allProps} className={className} ref={ref}>
         {prefix}
         {children}
         {postfix}
