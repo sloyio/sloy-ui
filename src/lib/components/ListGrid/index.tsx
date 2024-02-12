@@ -13,7 +13,7 @@ const Wrapper = styled.label`
   cursor: pointer;
   ${({ theme }) => css`
     gap: ${theme.size.m};
-    padding: ${theme.size.m} ${theme.size.m};
+    padding: ${theme.size.s} ${theme.size.m};
     border-radius: ${theme.size.s};
     &:hover {
       ${getBackgroundStyle({
