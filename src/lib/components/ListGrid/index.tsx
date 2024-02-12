@@ -28,6 +28,12 @@ const Wrapper = styled.label`
       })};
     }
   `}
+
+  @supports (grid-template-columns: subgrid) {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 3;
+  }
 `;
 
 const Content = styled.div`
@@ -74,6 +80,7 @@ const Postfix = styled.div`
   `}
   white-space: nowrap;
   font-feature-settings: 'tnum';
+  text-align: end;
 `;
 
 interface Props {
@@ -91,6 +98,11 @@ export interface ListGridProps {
 export const ListGrid = styled.div<ListGridProps>`
   display: flex;
   flex-direction: column;
+
+  @supports (grid-template-columns: subgrid) {
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+  }
 `;
 
 export function ListGridItem({
@@ -137,6 +149,10 @@ const HeaderDividerWrapper = styled.div`
     margin-right: ${theme.size.m};
     margin-left: ${theme.size.m};
   `}
+
+  @supports (grid-template-columns: subgrid) {
+    grid-column: span 3;
+  }
 `;
 
 export function ListGridHeader({
