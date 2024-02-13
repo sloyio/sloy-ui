@@ -12,8 +12,22 @@ import {
 } from '@floating-ui/react';
 import React, { useState } from 'react';
 
+type Placement =
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end';
+
 interface Props {
-  placement?: string;
+  placement?: Placement;
   children: React.ReactNode;
 }
 

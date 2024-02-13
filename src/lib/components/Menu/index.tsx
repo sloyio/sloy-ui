@@ -4,6 +4,7 @@ import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 
 interface Props {
   children: ReactNode;
+  rounded?: boolean;
 }
 
 const Wrapper = styled.div`
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: start;
-  min-width: 243px;
+  width: fit-content;
   transition: all 0.15s ease-out;
   border-radius: 16px;
   ${({ theme }) =>
