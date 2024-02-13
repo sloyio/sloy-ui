@@ -53,7 +53,6 @@ const TitleWrapper = styled.div`
 
 const Title = styled.span`
   font-weight: 500;
-  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
