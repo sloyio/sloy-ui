@@ -28,13 +28,16 @@ const POPUP_HORIZONTAL_PADDING = 16;
 const POPUP_VERTICAL_PADDING = 16;
 
 const Wrapper = styled.div`
+  width: 100%;
   padding: ${POPUP_VERTICAL_PADDING}px ${POPUP_HORIZONTAL_PADDING}px;
 
   ${({ theme }) => css`
     border-radius: ${theme.size.xl};
   `}
 `;
-const Header = styled.div``;
+const Header = styled.div`
+  margin-bottom: 8px;
+`;
 const Cover = styled.img`
   margin-top: -${POPUP_VERTICAL_PADDING}px;
   margin-left: -${POPUP_HORIZONTAL_PADDING}px;
@@ -156,7 +159,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   ref,
 ) {
   const filteredBlocks = useMemo(
-    () => removeDuplicatedDividers(blocks),
+    () => removeDuplicatedDividers([{ type: 'divider' }, ...blocks]),
     [blocks],
   );
 
@@ -183,7 +186,6 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
           </AdditionalInfo>
         )}
       </Header>
-      <Divider />
       {filteredBlocks.length > 0 && (
         <Blocks>
           {filteredBlocks.map((block, i) => (
