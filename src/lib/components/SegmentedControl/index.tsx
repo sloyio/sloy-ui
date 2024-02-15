@@ -9,7 +9,7 @@ interface Props {
 
 const Wrapper = styled.div`
   height: 40px;
-  width: 112px;
+  width: fit-content;
   padding: 0 4px;
   display: flex;
   align-items: center;
