@@ -44,11 +44,12 @@ function getTypeStyles({ $type = ButtonType.ACCENT }: { $type: ButtonType }) {
     case ButtonType.DEFAULT:
       return css`
         ${({ theme }) => css`
+          color: ${theme.text.color.secondary};
           ${getBackgroundStyle({
             color: theme.buttons.color.default,
             opacity: theme.buttons.opacity.default,
+            blur: theme.buttons.blur,
           })};
-          color: ${theme.text.color.secondary};
         `}
 
         &:hover {
@@ -56,6 +57,7 @@ function getTypeStyles({ $type = ButtonType.ACCENT }: { $type: ButtonType }) {
             ${getBackgroundStyle({
               color: theme.buttons.color.hover,
               opacity: theme.buttons.opacity.hover,
+              blur: theme.buttons.blur,
             })};
           `}
         }
@@ -65,6 +67,7 @@ function getTypeStyles({ $type = ButtonType.ACCENT }: { $type: ButtonType }) {
             ${getBackgroundStyle({
               color: theme.buttons.color.active,
               opacity: theme.buttons.opacity.active,
+              blur: theme.buttons.blur,
             })};
           `}
         }

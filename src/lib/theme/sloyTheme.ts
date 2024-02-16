@@ -39,6 +39,7 @@ export const sloyTheme: DefaultTheme = deepmerge<DefaultTheme>(defaultTheme, {
     },
   },
   buttons: {
+    blur: 20,
     color: {
       default: '#6686f0',
       hover: '#6e89dd',

@@ -1,8 +1,6 @@
 import { StoryFn } from '@storybook/react';
-import { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Popover from '.';
-import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 import { Button } from '../Button';
 import { Icon, IconType } from '../Icon';
 import Menu from '../Menu';
@@ -14,53 +12,6 @@ const Wrapper = styled.div`
   margin-top: 200px;
 `;
 const Example = styled.div``;
-
-const StyledButton = styled(Button)`
-  gap: 4px;
-  color: #fff;
-  ${({ theme }) => css`
-    ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: 0.1,
-      blur: 50,
-    })}
-    &:hover {
-      ${getBackgroundStyle({
-        color: theme.colors.background.secondary,
-        opacity: 0.1,
-        blur: 50,
-      })}
-    }
-    &:active {
-      ${getBackgroundStyle({
-        color: theme.colors.background.tertiary,
-        opacity: 0.2,
-        blur: 50,
-      })}
-    }
-  `}
-`;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const LocationSwitcher = forwardRef<HTMLButtonElement>(
-  // eslint-disable-next-line no-empty-pattern
-  function LocationSwitcher({}, ref) {
-    return (
-      <Popover placement="top-start">
-        <StyledButton ref={ref} rounded>
-          <Icon type={IconType.Earth} />
-          Город
-        </StyledButton>
-        <Menu>
-          <MenuGroup label="Россия">
-            <MenuItem>Екатеринбург</MenuItem>
-            <MenuItem>Челябинск</MenuItem>
-          </MenuGroup>
-        </Menu>
-      </Popover>
-    );
-  },
-);
 
 const Template: StoryFn = () => {
   return (
@@ -108,7 +59,6 @@ const Template: StoryFn = () => {
         saepe voluptatibus quidem dolore.
       </p>
       <Example>
-        {/* <LocationSwitcher /> */}
         <Popover placement="top-start">
           <Button prefix={<Icon type={IconType.Earth} />} rounded>
             Город
