@@ -10,27 +10,20 @@ interface Props {
 const Wrapper = styled.div`
   height: 40px;
   width: fit-content;
-  padding: 0 4px;
+  padding: 0 8px;
   display: flex;
   align-items: center;
   border-radius: 42px;
   gap: 8px;
   transition: all 0.15s ease-out;
-
   ${({ theme }) => css`
+    color: ${theme.text.color.secondary};
     ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: 0.1,
+      color: theme.buttons.color.default,
+      opacity: theme.buttons.opacity.default,
+      blur: theme.buttons.blur,
     })};
-    @media (hover) {
-      &:hover {
-        ${getBackgroundStyle({
-          color: theme.colors.background.secondary,
-          opacity: 0.2,
-        })};
-      }
-    }
-  `};
+  `}
 `;
 
 const Element = styled.button<{ $isActive: boolean }>`
@@ -50,15 +43,12 @@ const Element = styled.button<{ $isActive: boolean }>`
   `}
 `;
 
-export default function SegmentedControl({
-  items,
-  activeItemIndex,
-  onChange,
-}: Props) {
+export function SegmentedControl({ items, activeItemIndex, onChange }: Props) {
   return (
     <Wrapper>
       {items.map((elem, index) => (
         <Element
+          key={elem}
           $isActive={index === activeItemIndex}
           onClick={() => onChange(index)}
         >

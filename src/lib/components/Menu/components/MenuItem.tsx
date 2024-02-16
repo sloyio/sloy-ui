@@ -1,12 +1,7 @@
-import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { getBackgroundStyle } from '../../../utils/getBackgroundStyle';
 
-interface Props {
-  children: ReactNode;
-}
-
-const Wrapper = styled.button`
+export const MenuItem = styled.button`
   padding: 8px;
   cursor: pointer;
   background: none;
@@ -26,7 +21,3 @@ const Wrapper = styled.button`
     }
   `}
 `;
-
-export default function MenuItem({ children }: Props) {
-  return <Wrapper>{children}</Wrapper>;
-}

@@ -1,6 +1,6 @@
 import { StoryFn } from '@storybook/react';
 import { useState } from 'react';
-import SegmentedControl from '.';
+import { SegmentedControl } from '.';
 
 const Template: StoryFn = () => {
   const [activeElem, setActiveElem] = useState<number>(0);

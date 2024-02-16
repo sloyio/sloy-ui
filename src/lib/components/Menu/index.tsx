@@ -24,6 +24,9 @@ const Wrapper = styled.div`
     })};
 `;
 
-export default function Menu({ children }: Props) {
+export function Menu({ children }: Props) {
   return <Wrapper>{children}</Wrapper>;
 }
+
+export { MenuGroup } from './components/MenuGroup';
+export { MenuItem } from './components/MenuItem';

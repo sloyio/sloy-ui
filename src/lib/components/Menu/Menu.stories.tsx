@@ -1,8 +1,6 @@
 import { StoryFn } from '@storybook/react';
 import styled from 'styled-components';
-import Menu from '.';
-import MenuGroup from './components/MenuGroup';
-import MenuItem from './components/MenuItem';
+import { Menu, MenuGroup, MenuItem } from '.';
 
 const Wrapper = styled.div`
   display: flex;

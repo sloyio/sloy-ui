@@ -21,7 +21,7 @@ const Label = styled.span`
   gap: 10px;
 `;
 
-export default function MenuGroup({ label, children }: Props) {
+export function MenuGroup({ label, children }: Props) {
   return (
     <Wrapper>
       <Label>{label}</Label>

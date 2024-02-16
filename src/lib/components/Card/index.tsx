@@ -3,8 +3,6 @@ import styled, { css } from 'styled-components';
 import { Divider } from '../Divider';
 import { AnimatedLogo } from '../AnimatedLogo';
 import { removeDuplicatedDividers } from './utils/removeDuplicatedDividers';
-import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
-import React from 'react';
 
 type DividerCardBlock = { type: 'divider' };
 type ValueCardBlock = { type: string; title?: string; value: ReactNode };

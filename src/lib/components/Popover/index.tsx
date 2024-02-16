@@ -31,7 +31,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function Popover({ placement = 'top', children }: Props) {
+export function Popover({ placement = 'top', children }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { refs, floatingStyles, context } = useFloating({
