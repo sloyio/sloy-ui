@@ -14,6 +14,9 @@ export enum IconType {
   External = 'external',
   Heart = 'heart',
   BrokenHeart = 'brokenHeart',
+  DarkMode = 'darkmode',
+  LightMode = 'lightmode',
+  Earth = 'earth',
 }
 
 export type IconBaseProps = { color?: string };

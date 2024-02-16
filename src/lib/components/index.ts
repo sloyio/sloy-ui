@@ -14,3 +14,7 @@ export * from './Switch';
 export * from './ListGrid';
 export * from './Link';
 export * from './Tag';
+
+export * from './Menu';
+export * from './Popover';
+export * from './SegmentedControl';

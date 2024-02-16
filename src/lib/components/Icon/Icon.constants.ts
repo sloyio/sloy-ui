@@ -15,6 +15,9 @@ import { External } from './External';
 import Heart from './Heart';
 import { BrokenHeart } from './BrokenHeart';
 import { Close } from './Close';
+import DarkMode from './DarkMode'
+import LightMode from './LightMode'
+import Earth from './Earth'
 
 export const ICON_BY_TYPE: Record<
   IconType,
@@ -35,4 +38,7 @@ export const ICON_BY_TYPE: Record<
   [IconType.Pedestrian]: Pedestrian,
   [IconType.PublicTransport]: PublicTransport,
   [IconType.Close]: Close,
+  [IconType.DarkMode]: DarkMode,
+  [IconType.LightMode]: LightMode,
+  [IconType.Earth]: Earth,
 };

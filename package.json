@@ -2,7 +2,7 @@
   "name": "sloy-ui",
   "license": "Apache-2.0",
   "type": "module",
-  "version": "0.0.1-rc.10",
+  "version": "0.0.1-rc.16",
   "scripts": {
     "start": "storybook dev -p 6006",
     "build": "tsc && vite build",
@@ -45,6 +45,7 @@
     "styled-components": "^6.1.6"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.26.8",
     "classnames": "^2.3.2",
     "deepmerge": "^4.3.1",
     "framer-motion": "^10.16.16",
