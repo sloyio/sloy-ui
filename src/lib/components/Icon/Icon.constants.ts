@@ -15,9 +15,9 @@ import { External } from './External';
 import Heart from './Heart';
 import { BrokenHeart } from './BrokenHeart';
 import { Close } from './Close';
-import DarkMode from './DarkMode'
-import LightMode from './LightMode'
-import Earth from './Earth'
+import DarkMode from './DarkMode';
+import LightMode from './LightMode';
+import Earth from './Earth';
 
 export const ICON_BY_TYPE: Record<
   IconType,

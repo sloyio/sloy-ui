@@ -16,6 +16,7 @@ export const getBackgroundStyle = ({
     return css`
       background-color: ${rgba(color, opacity)} ${imporant ? '!important' : ''};
       backdrop-filter: blur(${blur}px);
+      -webkit-backdrop-filter: blur(${blur}px);
     `;
   } else if (opacity < 1) {
     return css`

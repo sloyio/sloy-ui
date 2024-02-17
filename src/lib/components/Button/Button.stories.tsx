@@ -26,7 +26,7 @@ const Template: StoryFn<typeof Button> = (args: ButtonProps) => {
         Default
       </Button>
       <Button {...args} type={ButtonType.CONTRAST}>
-        Default
+        Contrast
       </Button>
     </div>
   );

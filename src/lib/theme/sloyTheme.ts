@@ -4,7 +4,9 @@ import { defaultTheme } from '.';
 
 const sloyColorsTokens = {
   text: {
-    primary: '#FFF',
+    primary: '#fff',
+    secondary: '#9baac3',
+    tertiary: '#6e7c94',
   },
   background: {
     primary: '#0a0d16',
@@ -32,23 +34,20 @@ export const sloyTheme: DefaultTheme = deepmerge<DefaultTheme>(defaultTheme, {
     },
   },
   text: {
-    color: {
-      primary: '#fff',
-      secondary: '#9baac3',
-      tertiary: '#6e7c94',
-    },
+    color: sloyColorsTokens.text,
   },
   buttons: {
     blur: 20,
+    textColor: sloyColorsTokens.text.primary,
     color: {
-      default: '#6686f0',
-      hover: '#6e89dd',
-      active: '#6e89dd',
+      default: '#0A0D16',
+      hover: '#6083FF',
+      active: '#6083FF',
     },
     opacity: {
-      default: 0.2,
-      hover: 0.4,
-      active: 0.5,
+      default: 0.7,
+      hover: 0.1,
+      active: 0.2,
     },
   },
 });

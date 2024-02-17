@@ -11,7 +11,9 @@ const size = {
 
 const ekbColorsTokens = {
   text: {
-    primary: '#FFF',
+    primary: '#fff',
+    secondary: '#9baac3',
+    tertiary: '#6e7c94',
   },
   background: {
     primary: '#1e2841',
@@ -39,13 +41,10 @@ export const defaultTheme: DefaultTheme = {
     },
   },
   text: {
-    color: {
-      primary: '#fff',
-      secondary: '#9baac3',
-      tertiary: '#6e7c94',
-    },
+    color: ekbColorsTokens.text,
   },
   buttons: {
+    textColor: ekbColorsTokens.text.primary,
     color: {
       default: '#2f395b',
       hover: '#3c4669',
