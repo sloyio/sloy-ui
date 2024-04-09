@@ -1,8 +1,9 @@
 import { StoryFn } from '@storybook/react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { Menu, MenuGroup, MenuItem, Popover } from '..';
 import { Button } from '../Button';
 import { Icon, IconType } from '../Icon';
-import { Popover, Menu, MenuGroup, MenuItem } from '..';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,7 +11,16 @@ const Wrapper = styled.div`
 `;
 const Example = styled.div``;
 
+const russia = { ekaterinburg: 'Екатеринбург', chelyabinsk: 'Челябинск' };
+const armenia = { whole_country: 'Вся страна', erevan: 'Ереван' };
+
+const cities: Record<string, string> = {
+  ...russia,
+  ...armenia,
+};
+
 const Template: StoryFn = () => {
+  const [city, setCity] = useState<string>('ekaterinburg');
   return (
     <Wrapper>
       <p
@@ -58,12 +68,22 @@ const Template: StoryFn = () => {
       <Example>
         <Popover placement="top-start">
           <Button prefix={<Icon type={IconType.Earth} />} rounded>
-            Город
+            {cities[city]}
           </Button>
           <Menu>
             <MenuGroup label="Россия">
-              <MenuItem>Екатеринбург</MenuItem>
-              <MenuItem>Челябинск</MenuItem>
+              {Object.keys(russia).map((elem) => (
+                <MenuItem onClick={() => setCity(elem)}>
+                  {cities[elem]}
+                </MenuItem>
+              ))}
+            </MenuGroup>
+            <MenuGroup label="Армения">
+              {Object.keys(armenia).map((elem) => (
+                <MenuItem onClick={() => setCity(elem)}>
+                  {cities[elem]}
+                </MenuItem>
+              ))}
             </MenuGroup>
           </Menu>
         </Popover>

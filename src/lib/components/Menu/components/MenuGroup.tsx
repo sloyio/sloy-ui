@@ -9,16 +9,17 @@ interface Props {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   width: 100%;
 `;
 
 const Label = styled.span`
-  font-size: 10px;
-  color: #9baac3;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 0.6);
   display: flex;
-  padding: 0 8px;
-  gap: 10px;
+  padding: 2px 8px;
+  text-transform: uppercase;
 `;
 
 export function MenuGroup({ label, children }: Props) {

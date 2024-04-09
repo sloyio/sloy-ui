@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 import { getBackgroundStyle } from '../../../utils/getBackgroundStyle';
 
 export const MenuItem = styled.button`
-  padding: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 4px 8px;
   cursor: pointer;
   background: none;
   outline: none;
@@ -15,8 +17,8 @@ export const MenuItem = styled.button`
   ${({ theme }) => css`
     &:hover {
       ${getBackgroundStyle({
-        color: theme.colors.background.tertiary,
-        opacity: 0.2,
+        color: theme.colors.background.secondary,
+        opacity: 0.08,
       })}
     }
   `}

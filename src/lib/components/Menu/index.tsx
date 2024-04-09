@@ -9,18 +9,18 @@ interface Props {
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 12px 8px 8px 8px;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: start;
   width: fit-content;
-  transition: all 0.15s ease-out;
+  min-width: 240px;
+  padding: 16px 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
   border-radius: 16px;
   ${({ theme }) =>
     getBackgroundStyle({
-      color: theme.colors.background.tertiary,
-      opacity: 0.2,
-      blur: 50,
+      color: theme.colors.background.primary,
+      opacity: 0.88,
+      blur: 10,
     })};
 `;
 
