@@ -54,7 +54,7 @@ export function Popover({ placement = 'top', children }: Props) {
 
   const [referenceContent, popoverContent] = React.Children.toArray(children);
 
-  if (!referenceContent || !popoverContent) return;
+  if (!referenceContent || !popoverContent) return null;
 
   return (
     <>

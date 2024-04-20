@@ -73,8 +73,8 @@ const Template: StoryFn = () => {
 };
 
 export default {
-  title: 'Atoms/Popover',
   component: Template,
+  title: 'Atoms/Popover',
 };
 
 export const Default = Template.bind({});
