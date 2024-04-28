@@ -1,8 +1,9 @@
 import { StoryFn } from '@storybook/react';
+import { useMemo, useState } from 'react';
 import styled from 'styled-components';
+import { Menu, MenuGroup, MenuItem, Popover } from '..';
 import { Button } from '../Button';
 import { Icon, IconType } from '../Icon';
-import { Popover, Menu, MenuGroup, MenuItem } from '..';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,7 +11,39 @@ const Wrapper = styled.div`
 `;
 const Example = styled.div``;
 
+const sections = [
+  {
+    label: 'Армени',
+    items: [
+      { label: 'Вся страна', id: 'whole_country' },
+      { label: 'Ереван', id: 'erevan' },
+    ],
+  },
+  {
+    label: 'Россия',
+    items: [
+      { label: 'Екатеринбург', id: 'ekaterinburg' },
+      { label: 'Челябинск', id: 'chelyabinsk' },
+    ],
+  },
+];
+
 const Template: StoryFn = () => {
+  const [city, setCity] = useState<string>('ekaterinburg');
+
+  const cityName = useMemo(() => {
+    return sections
+      .map((elem) => elem.items)
+      .flat()
+      .find((elem) => elem.id === city)?.label;
+  }, [city]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  function onClick(city: string) {
+    setCity(city);
+    setIsOpen(false);
+  }
+
   return (
     <Wrapper>
       <p
@@ -56,15 +89,18 @@ const Template: StoryFn = () => {
         saepe voluptatibus quidem dolore.
       </p>
       <Example>
-        <Popover placement="top-start">
+        <Popover placement="top-start" isOpen={isOpen} setIsOpen={setIsOpen}>
           <Button prefix={<Icon type={IconType.Earth} />} rounded>
-            Город
+            {cityName}
           </Button>
           <Menu>
-            <MenuGroup label="Россия">
-              <MenuItem>Екатеринбург</MenuItem>
-              <MenuItem>Челябинск</MenuItem>
-            </MenuGroup>
+            {sections.map((elem) => (
+              <MenuGroup label={elem.label}>
+                {elem.items.map((el) => (
+                  <MenuItem onClick={() => onClick(el.id)}>{el.label}</MenuItem>
+                ))}
+              </MenuGroup>
+            ))}
           </Menu>
         </Popover>
       </Example>

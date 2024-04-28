@@ -10,7 +10,7 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 type Placement =
   | 'top'
@@ -29,11 +29,16 @@ type Placement =
 interface Props {
   placement?: Placement;
   children: React.ReactNode;
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function Popover({ placement = 'top', children }: Props) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
+export function Popover({
+  placement = 'top',
+  children,
+  isOpen,
+  setIsOpen,
+}: Props) {
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
