@@ -10,7 +10,7 @@ interface Props {
 const Wrapper = styled.div`
   display: flex;
   width: fit-content;
-  min-width: 240px;
+  width: fit-content;
   padding: 16px 8px;
   flex-direction: column;
   align-items: flex-start;
