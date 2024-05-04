@@ -20,6 +20,7 @@ const Label = styled.span`
   display: flex;
   padding: 2px 8px;
   text-transform: uppercase;
+  letter-spacing: 2px;
 `;
 
 export function MenuGroup({ label, children }: Props) {

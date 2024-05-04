@@ -13,7 +13,7 @@ const Example = styled.div``;
 
 const sections = [
   {
-    label: 'Армени',
+    label: 'Армения',
     items: [
       { label: 'Вся страна', id: 'whole_country' },
       { label: 'Ереван', id: 'erevan' },

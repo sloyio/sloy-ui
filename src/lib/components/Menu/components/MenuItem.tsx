@@ -4,7 +4,7 @@ import { getBackgroundStyle } from '../../../utils/getBackgroundStyle';
 export const MenuItem = styled.button`
   font-size: 16px;
   line-height: 20px;
-  padding: 4px 8px;
+  padding: 5px 8px;
   cursor: pointer;
   background: none;
   outline: none;
