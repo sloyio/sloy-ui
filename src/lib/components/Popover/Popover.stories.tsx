@@ -1,8 +1,13 @@
 import { StoryFn } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { Menu, MenuGroup, MenuItem, Popover } from '..';
-import { Button } from '../Button';
+import { Popover } from '..';
+import {
+  Combobox,
+  ComboboxGroup,
+  ComboboxItem,
+  ComboboxTrigger,
+} from '../Combobox';
 import { Icon, IconType } from '../Icon';
 
 const Wrapper = styled.div`
@@ -90,18 +95,20 @@ const Template: StoryFn = () => {
       </p>
       <Example>
         <Popover placement="top-start" isOpen={isOpen} setIsOpen={setIsOpen}>
-          <Button prefix={<Icon type={IconType.Earth} />} rounded>
+          <ComboboxTrigger prefix={<Icon type={IconType.Earth} />}>
             {cityName}
-          </Button>
-          <Menu>
+          </ComboboxTrigger>
+          <Combobox>
             {sections.map((elem) => (
-              <MenuGroup label={elem.label}>
+              <ComboboxGroup label={elem.label}>
                 {elem.items.map((el) => (
-                  <MenuItem onClick={() => onClick(el.id)}>{el.label}</MenuItem>
+                  <ComboboxItem onClick={() => onClick(el.id)}>
+                    {el.label}
+                  </ComboboxItem>
                 ))}
-              </MenuGroup>
+              </ComboboxGroup>
             ))}
-          </Menu>
+          </Combobox>
         </Popover>
       </Example>
     </Wrapper>
