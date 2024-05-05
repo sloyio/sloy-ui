@@ -12,7 +12,7 @@ const ComboboxGroupLabel = styled.div`
   line-height: 16px;
   padding: 2px 8px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.6px;
 `;
 
 export function ComboboxGroup({

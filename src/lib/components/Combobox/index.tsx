@@ -20,6 +20,5 @@ export function Combobox({ children }: { children: ReactNode }) {
   return <ComboboxWrapper>{children}</ComboboxWrapper>;
 }
 
-export { ComboboxTrigger } from './components/ComboBoxTrigger';
 export { ComboboxGroup } from './components/ComboboxGroup';
 export { ComboboxItem } from './components/ComboboxItem';

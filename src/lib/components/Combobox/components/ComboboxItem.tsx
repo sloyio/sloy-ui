@@ -4,6 +4,7 @@ import { getBackgroundStyle } from '../../../utils/getBackgroundStyle';
 
 const ComboboxItemButton = styled.button`
   color: #fff;
+  font-size: 16px;
   padding: 6px 8px;
   text-align: start;
   border-radius: 8px;
