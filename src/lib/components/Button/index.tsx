@@ -167,7 +167,7 @@ export const BaseButton = styled.button<{
   appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   white-space: nowrap;
   ${getRoundedStyles}
   ${getTypeStyles}

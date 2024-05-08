@@ -100,11 +100,17 @@ const Template: StoryFn = () => {
           <Combobox>
             {sections.map((elem) => (
               <ComboboxGroup label={elem.label}>
-                {elem.items.map((el) => (
-                  <ComboboxItem onClick={() => onClick(el.id)}>
-                    {el.label}
-                  </ComboboxItem>
-                ))}
+                {elem.items.map((el) => {
+                  const isActive = el.id === city;
+                  return (
+                    <ComboboxItem
+                      onClick={() => onClick(el.id)}
+                      isActive={isActive}
+                    >
+                      {el.label}
+                    </ComboboxItem>
+                  );
+                })}
               </ComboboxGroup>
             ))}
           </Combobox>

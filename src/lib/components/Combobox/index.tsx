@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 
 const ComboboxWrapper = styled.div`
-  padding: 16px 8px;
+  padding: 16px 0;
   border-radius: 16px;
   display: flex;
   flex-direction: column;

@@ -17,3 +17,4 @@ export * from './Tag';
 
 export * from './Popover';
 export * from './SegmentedControl';
+export * from './Combobox'
