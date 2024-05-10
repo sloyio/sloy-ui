@@ -1,14 +1,42 @@
 import { StoryFn } from '@storybook/react';
 import { useMemo, useState } from 'react';
-import styled from 'styled-components';
-import { Button, ButtonType, Popover } from '..';
-import { Combobox, ComboboxGroup, ComboboxItem } from '../Combobox';
-import { Icon, IconType } from '../Icon';
+import styled, { css } from 'styled-components';
+import { Icon, IconType, Popover } from '..';
+import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
+import { Menu, MenuGroup, MenuItem } from '../Menu';
 
 const Wrapper = styled.div`
   display: flex;
   margin-top: 200px;
 `;
+
+const PopoverButton = styled.div`
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 160px;
+  font-size: 16px;
+  line-height: 20px;
+  ${({ theme }) => css`
+    ${getBackgroundStyle({
+      color: theme.colors.background.primary,
+      opacity: 0.88,
+      blur: 10,
+    })}
+    &:hover {
+      ${getBackgroundStyle({
+        color: theme.colors.background.secondary,
+        opacity: 0.04,
+        blur: 10,
+      })}
+    }
+  `}
+`;
+
 const Example = styled.div``;
 
 const sections = [
@@ -90,30 +118,27 @@ const Template: StoryFn = () => {
       </p>
       <Example>
         <Popover placement="top-start" isOpen={isOpen} setIsOpen={setIsOpen}>
-          <Button
-            type={ButtonType.COMBOBOX}
-            prefix={<Icon type={IconType.Earth} />}
-            rounded
-          >
+          <PopoverButton>
+            <Icon type={IconType.Earth} />
             {cityName}
-          </Button>
-          <Combobox>
+          </PopoverButton>
+          <Menu>
             {sections.map((elem) => (
-              <ComboboxGroup label={elem.label}>
+              <MenuGroup label={elem.label}>
                 {elem.items.map((el) => {
                   const isActive = el.id === city;
                   return (
-                    <ComboboxItem
+                    <MenuItem
                       onClick={() => onClick(el.id)}
                       isActive={isActive}
                     >
                       {el.label}
-                    </ComboboxItem>
+                    </MenuItem>
                   );
                 })}
-              </ComboboxGroup>
+              </MenuGroup>
             ))}
-          </Combobox>
+          </Menu>
         </Popover>
       </Example>
     </Wrapper>

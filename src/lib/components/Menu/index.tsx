@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 
-const ComboboxWrapper = styled.div`
+const MenuWrapper = styled.div`
   padding: 16px 0;
   border-radius: 16px;
   display: flex;
@@ -16,9 +16,9 @@ const ComboboxWrapper = styled.div`
     })}
 `;
 
-export function Combobox({ children }: { children: ReactNode }) {
-  return <ComboboxWrapper>{children}</ComboboxWrapper>;
+export function Menu({ children }: { children: ReactNode }) {
+  return <MenuWrapper>{children}</MenuWrapper>;
 }
 
-export { ComboboxGroup } from './components/ComboboxGroup';
-export { ComboboxItem } from './components/ComboboxItem';
+export { MenuGroup } from './components/MenuGroup';
+export { MenuItem } from './components/MenuItem';

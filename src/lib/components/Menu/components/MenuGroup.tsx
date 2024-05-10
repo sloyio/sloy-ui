@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-const ComboboxGroupWrapper = styled.div`
+const MenuGroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const ComboboxGroupLabel = styled.div`
+const MenuGroupLabel = styled.div`
   color: rgba(255, 255, 255, 0.6);
   font-size: 12px;
   line-height: 16px;
@@ -15,7 +15,7 @@ const ComboboxGroupLabel = styled.div`
   letter-spacing: 0.6px;
 `;
 
-export function ComboboxGroup({
+export function MenuGroup({
   label,
   children,
 }: {
@@ -23,9 +23,9 @@ export function ComboboxGroup({
   children: ReactNode;
 }) {
   return (
-    <ComboboxGroupWrapper>
-      <ComboboxGroupLabel>{label}</ComboboxGroupLabel>
+    <MenuGroupWrapper>
+      <MenuGroupLabel>{label}</MenuGroupLabel>
       {children}
-    </ComboboxGroupWrapper>
+    </MenuGroupWrapper>
   );
 }

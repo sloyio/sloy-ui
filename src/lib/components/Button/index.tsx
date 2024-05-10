@@ -83,25 +83,6 @@ function getTypeStyles({ $type = ButtonType.ACCENT }: { $type: ButtonType }) {
           background: #141414;
         }
       `;
-    case ButtonType.COMBOBOX:
-      return css`
-        color: #fff;
-        ${({ theme }) => css`
-          ${getBackgroundStyle({
-            color: theme.colors.background.primary,
-            opacity: 0.88,
-            blur: 10,
-          })}
-          &:hover {
-            color: #fff;
-            ${getBackgroundStyle({
-              color: theme.colors.background.secondary,
-              opacity: 0.04,
-              blur: 10,
-            })};
-          }
-        `};
-      `;
     default:
       return null;
   }
@@ -118,7 +99,7 @@ function getSizeStyles({ $size = ButtonSize.LARGE }: { $size: ButtonSize }) {
       `;
     case ButtonSize.MEDIUM:
       return css`
-        padding: 8px;
+        padding: 8px 12px;
         font-size: 14px;
         line-height: 18px;
       `;

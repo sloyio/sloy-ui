@@ -27,7 +27,7 @@ import { getBackgroundStyle } from '../../../utils/getBackgroundStyle';
 //    }
 //  `;
 
-const ComboboxItemButton = styled.button<{ $isActive?: boolean }>`
+const MenuItemButton = styled.button<{ $isActive?: boolean }>`
   height: 26px;
   padding: 0 8px;
   color: #fff;
@@ -36,7 +36,7 @@ const ComboboxItemButton = styled.button<{ $isActive?: boolean }>`
   outline: none;
 `;
 
-const ComboboxItemText = styled.div`
+const MenuItemText = styled.div`
   font-size: 16px;
   line-height: 20px;
   text-align: left;
@@ -54,7 +54,7 @@ const ComboboxItemText = styled.div`
   }
 `;
 
-const ComboboxItemActiveMark = styled.div<{ $isActive?: boolean }>`
+const MenuItemActiveMark = styled.div<{ $isActive?: boolean }>`
   position: relative;
   top: -30px;
   left: -8px;
@@ -65,7 +65,7 @@ const ComboboxItemActiveMark = styled.div<{ $isActive?: boolean }>`
   border-bottom-right-radius: 2px;
 `;
 
-export function ComboboxItem({
+export function MenuItem({
   children,
   onClick,
   isActive,
@@ -76,10 +76,10 @@ export function ComboboxItem({
 }) {
   return (
     <>
-      <ComboboxItemButton $isActive={isActive} onClick={onClick}>
-        <ComboboxItemText>{children}</ComboboxItemText>
-        {isActive && <ComboboxItemActiveMark />}
-      </ComboboxItemButton>
+      <MenuItemButton $isActive={isActive} onClick={onClick}>
+        <MenuItemText>{children}</MenuItemText>
+        {isActive && <MenuItemActiveMark />}
+      </MenuItemButton>
     </>
   );
 }
