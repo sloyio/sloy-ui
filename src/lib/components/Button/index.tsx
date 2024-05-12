@@ -6,7 +6,6 @@ export enum ButtonType {
   ACCENT = 'accent',
   DEFAULT = 'default',
   CONTRAST = 'contrast',
-  COMBOBOX = 'combobox',
 }
 
 export enum ButtonSize {
