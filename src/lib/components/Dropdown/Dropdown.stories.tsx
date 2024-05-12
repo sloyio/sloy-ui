@@ -1,40 +1,11 @@
 import { StoryFn } from '@storybook/react';
 import { useMemo, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { Icon, IconType, Popover } from '..';
-import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
-import { Menu, MenuGroup, MenuItem } from '../Menu';
+import styled from 'styled-components';
+import { Dropdown, Icon, IconType } from '..';
 
 const Wrapper = styled.div`
   display: flex;
   margin-top: 200px;
-`;
-
-const PopoverButton = styled.div`
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 40px;
-  width: fit-content;
-  cursor: pointer;
-  border-radius: 160px;
-  font-size: 16px;
-  line-height: 20px;
-  ${({ theme }) => css`
-    ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: 0.88,
-      blur: 10,
-    })}
-    &:hover {
-      ${getBackgroundStyle({
-        color: theme.colors.background.secondary,
-        opacity: 0.04,
-        blur: 10,
-      })}
-    }
-  `}
 `;
 
 const Example = styled.div``;
@@ -117,36 +88,36 @@ const Template: StoryFn = () => {
         saepe voluptatibus quidem dolore.
       </p>
       <Example>
-        <Popover placement="top-start" isOpen={isOpen} setIsOpen={setIsOpen}>
-          <PopoverButton>
+        <Dropdown placement="top-start" isOpen={isOpen} setIsOpen={setIsOpen}>
+          <Dropdown.Handle>
             <Icon type={IconType.Earth} />
             {cityName}
-          </PopoverButton>
-          <Menu>
+          </Dropdown.Handle>
+          <Dropdown.Menu>
             {sections.map((elem) => (
-              <MenuGroup label={elem.label}>
+              <Dropdown.MenuGroup label={elem.label}>
                 {elem.items.map((el) => {
                   const isActive = el.id === city;
                   return (
-                    <MenuItem
+                    <Dropdown.MenuItem
                       onClick={() => onClick(el.id)}
                       isActive={isActive}
                     >
                       {el.label}
-                    </MenuItem>
+                    </Dropdown.MenuItem>
                   );
                 })}
-              </MenuGroup>
+              </Dropdown.MenuGroup>
             ))}
-          </Menu>
-        </Popover>
+          </Dropdown.Menu>
+        </Dropdown>
       </Example>
     </Wrapper>
   );
 };
 
 export default {
-  title: 'Atoms/Popover',
+  title: 'Atoms/Dropdown',
   component: Template,
 };
 

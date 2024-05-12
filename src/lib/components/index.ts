@@ -15,6 +15,5 @@ export * from './ListGrid';
 export * from './Switch';
 export * from './Tag';
 
-export * from './Menu';
-export * from './Popover';
+export * from './Dropdown';
 export * from './SegmentedControl';
