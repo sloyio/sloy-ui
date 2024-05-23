@@ -11,7 +11,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 
 type Placement =
@@ -82,37 +82,6 @@ export function Dropdown({
     </>
   );
 }
-
-const DropdownHandleWrapper = styled.div`
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 40px;
-  width: fit-content;
-  cursor: pointer;
-  border-radius: 160px;
-  font-size: 16px;
-  line-height: 20px;
-  ${({ theme }) => css`
-    ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: 0.88,
-      blur: 10,
-    })}
-    &:hover {
-      ${getBackgroundStyle({
-        color: theme.colors.background.secondary,
-        opacity: 0.04,
-        blur: 10,
-      })}
-    }
-  `}
-`;
-
-Dropdown.Handle = function ({ children }: { children: ReactNode }) {
-  return <DropdownHandleWrapper>{children}</DropdownHandleWrapper>;
-};
 
 const DropdownMenuWrapper = styled.div`
   padding: 16px 0;
