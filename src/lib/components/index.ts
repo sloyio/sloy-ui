@@ -12,6 +12,7 @@ export * from './Divider';
 export * from './Icon';
 export * from './Link';
 export * from './ListGrid';
+export * from './Menu';
 export * from './Switch';
 export * from './Tag';
 

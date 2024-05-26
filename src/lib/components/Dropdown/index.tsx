@@ -10,9 +10,9 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import React, { Dispatch, ReactNode, SetStateAction } from 'react';
-import styled from 'styled-components';
-import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
+import React, { ReactNode, useState } from 'react';
+import { Menu, MenuGroup, MenuItem } from '..';
+import { DropdownContext, useDropdown } from './Context';
 
 type Placement =
   | 'top'
@@ -31,16 +31,11 @@ type Placement =
 interface Props {
   placement?: Placement;
   children: React.ReactNode;
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function Dropdown({
-  placement = 'top',
-  children,
-  isOpen,
-  setIsOpen,
-}: Props) {
+export function Dropdown({ placement = 'top', children }: Props) {
+  const { isOpen, setIsOpen } = useDropdown();
+
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -83,104 +78,30 @@ export function Dropdown({
   );
 }
 
-const DropdownMenuWrapper = styled.div`
-  padding: 16px 0;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  ${({ theme }) =>
-    getBackgroundStyle({
-      color: theme.colors.background.primary,
-      blur: theme.background.blur,
-      opacity: 0.88,
-    })}
-`;
+Dropdown.Provider = function ({ children }: { children: ReactNode }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [isOpen, setIsOpen] = useState(false);
 
-Dropdown.Menu = function ({ children }: { children: ReactNode }) {
-  return <DropdownMenuWrapper>{children}</DropdownMenuWrapper>;
-};
-
-const DropdownMenuGroupWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const DropdownMenuGroupLabel = styled.div`
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
-  line-height: 16px;
-  padding: 2px 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-`;
-
-Dropdown.MenuGroup = function ({
-  label,
-  children,
-}: {
-  label: string;
-  children: ReactNode;
-}) {
   return (
-    <DropdownMenuGroupWrapper>
-      <DropdownMenuGroupLabel>{label}</DropdownMenuGroupLabel>
+    <DropdownContext.Provider value={{ isOpen, setIsOpen }}>
       {children}
-    </DropdownMenuGroupWrapper>
+    </DropdownContext.Provider>
   );
 };
 
-const DropdownMenuItemButton = styled.button<{ $isActive?: boolean }>`
-  height: 26px;
-  padding: 0 8px;
-  color: #fff;
-  background: none;
-  border: none;
-  outline: none;
-`;
+Dropdown.Trigger = function ({ children }: { children: ReactNode }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { setIsOpen } = useDropdown();
 
-const DropdownMenuItemText = styled.div`
-  font-size: 16px;
-  line-height: 20px;
-  text-align: left;
-  padding: 6px 8px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  &:hover {
-    ${({ theme }) =>
-      getBackgroundStyle({
-        color: theme.colors.background.secondary,
-        opacity: 0.2,
-      })}
-  }
-`;
+  if (!children) return null;
 
-const DropdownMenuItemActiveMark = styled.div<{ $isActive?: boolean }>`
-  position: relative;
-  top: -30px;
-  left: -8px;
-  width: 2px;
-  height: 28px;
-  background-color: #fff;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-`;
+  const dropdownTrigger = React.cloneElement(<>{children}</>, {
+    onclick: () => setIsOpen((s) => !s),
+  });
 
-Dropdown.MenuItem = function ({
-  children,
-  onClick,
-  isActive,
-}: {
-  children: ReactNode;
-  onClick?: () => void;
-  isActive?: boolean;
-}) {
-  return (
-    <DropdownMenuItemButton $isActive={isActive} onClick={onClick}>
-      <DropdownMenuItemText>{children}</DropdownMenuItemText>
-      {isActive && <DropdownMenuItemActiveMark />}
-    </DropdownMenuItemButton>
-  );
+  return dropdownTrigger;
 };
+
+Dropdown.Menu = Menu;
+Dropdown.MenuGroup = MenuGroup;
+Dropdown.MenuItem = MenuItem;
