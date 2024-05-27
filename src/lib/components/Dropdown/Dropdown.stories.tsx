@@ -114,30 +114,28 @@ const Template: StoryFn = () => {
         saepe voluptatibus quidem dolore.
       </p>
       <Example>
-        <Dropdown.Provider>
-          <Dropdown placement="top-start">
-            <Dropdown.Trigger>
-              <DropdownButton>
-                <Icon type={IconType.Earth} />
-                {cityName}
-              </DropdownButton>
-            </Dropdown.Trigger>
-            <Dropdown.Menu>
-              {sections.map((group) => (
-                <Dropdown.MenuGroup title={group.label}>
-                  {group.items.map((item) => (
-                    <Dropdown.MenuItem
-                      onClick={() => onClick(item.id)}
-                      isActive={item.id === city}
-                    >
-                      {item.label}
-                    </Dropdown.MenuItem>
-                  ))}
-                </Dropdown.MenuGroup>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </Dropdown.Provider>
+        <Dropdown placement="top-start">
+          <Dropdown.Trigger>
+            <DropdownButton>
+              <Icon type={IconType.Earth} />
+              {cityName}
+            </DropdownButton>
+          </Dropdown.Trigger>
+          <Dropdown.Menu>
+            {sections.map((group) => (
+              <Dropdown.MenuGroup title={group.label}>
+                {group.items.map((item) => (
+                  <Dropdown.MenuItem
+                    onClick={() => onClick(item.id)}
+                    isActive={item.id === city}
+                  >
+                    {item.label}
+                  </Dropdown.MenuItem>
+                ))}
+              </Dropdown.MenuGroup>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown>
       </Example>
     </Wrapper>
   );

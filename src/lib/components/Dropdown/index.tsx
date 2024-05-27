@@ -10,9 +10,9 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Menu, MenuGroup, MenuItem } from '..';
-import { DropdownContext, useDropdown } from './Context';
+import { DropdownProvider, useDropdown } from './Context';
 
 type Placement =
   | 'top'
@@ -33,7 +33,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function Dropdown({ placement = 'top', children }: Props) {
+function DropdownTemplate({ placement = 'top', children }: Props) {
   const { isOpen, setIsOpen } = useDropdown();
 
   const { refs, floatingStyles, context } = useFloating({
@@ -78,16 +78,13 @@ export function Dropdown({ placement = 'top', children }: Props) {
   );
 }
 
-Dropdown.Provider = function ({ children }: { children: ReactNode }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [isOpen, setIsOpen] = useState(false);
-
+export function Dropdown({ placement, children }: Props) {
   return (
-    <DropdownContext.Provider value={{ isOpen, setIsOpen }}>
-      {children}
-    </DropdownContext.Provider>
+    <DropdownProvider>
+      <DropdownTemplate placement={placement}>{children}</DropdownTemplate>
+    </DropdownProvider>
   );
-};
+}
 
 Dropdown.Trigger = function ({ children }: { children: ReactNode }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
