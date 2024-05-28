@@ -11,6 +11,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import React, { ReactNode } from 'react';
+import styled from 'styled-components';
 import { Menu, MenuGroup, MenuItem } from '..';
 import { DropdownProvider, useDropdown } from './Context';
 
@@ -86,6 +87,12 @@ export function Dropdown({ placement, children }: Props) {
   );
 }
 
+const Wrapper = styled.div`
+  & > * {
+    user-select: none;
+  }
+`;
+
 Dropdown.Trigger = function ({ children }: { children: ReactNode }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { setIsOpen } = useDropdown();
@@ -96,7 +103,7 @@ Dropdown.Trigger = function ({ children }: { children: ReactNode }) {
     onclick: () => setIsOpen((s) => !s),
   });
 
-  return dropdownTrigger;
+  return <Wrapper>{dropdownTrigger}</Wrapper>;
 };
 
 Dropdown.Menu = Menu;

@@ -1,8 +1,7 @@
 import { StoryFn } from '@storybook/react';
 import { useMemo, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { Dropdown, Icon, IconType } from '..';
-import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
+import styled from 'styled-components';
+import { Button, ButtonSize, ButtonType, Dropdown, Icon, IconType } from '..';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,33 +9,6 @@ const Wrapper = styled.div`
 `;
 
 const Example = styled.div``;
-
-const DropdownButton = styled.div`
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 40px;
-  width: fit-content;
-  cursor: pointer;
-  border-radius: 160px;
-  font-size: 16px;
-  line-height: 20px;
-  ${({ theme }) => css`
-    ${getBackgroundStyle({
-      color: theme.colors.background.primary,
-      opacity: 0.88,
-      blur: 10,
-    })}
-    &:hover {
-      ${getBackgroundStyle({
-        color: theme.colors.background.secondary,
-        opacity: 0.04,
-        blur: 10,
-      })}
-    }
-  `}
-`;
 
 const sections = [
   {
@@ -116,10 +88,14 @@ const Template: StoryFn = () => {
       <Example>
         <Dropdown placement="top-start">
           <Dropdown.Trigger>
-            <DropdownButton>
-              <Icon type={IconType.Earth} />
+            <Button
+              type={ButtonType.DEFAULT}
+              size={ButtonSize.MEDIUM}
+              prefix={<Icon type={IconType.Earth} />}
+              rounded
+            >
               {cityName}
-            </DropdownButton>
+            </Button>
           </Dropdown.Trigger>
           <Dropdown.Menu>
             {sections.map((group) => (
