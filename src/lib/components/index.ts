@@ -1,20 +1,20 @@
 export * from './AnimatedLogo';
 
 export * from './Accordion';
+export * from './Card';
 export * from './RangeHistogram';
 export * from './SheetModal';
 export * from './Sidebar';
-export * from './Card';
 
 export * from './Button';
-export * from './Icon';
-export * from './Divider';
 export * from './Checkbox';
-export * from './Switch';
-export * from './ListGrid';
+export * from './Divider';
+export * from './Icon';
 export * from './Link';
+export * from './ListGrid';
+export * from './Menu';
+export * from './Switch';
 export * from './Tag';
 
-export * from './Menu';
-export * from './Popover';
+export * from './Dropdown';
 export * from './SegmentedControl';

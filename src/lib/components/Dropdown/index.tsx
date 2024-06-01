@@ -10,7 +10,10 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { ReactNode } from 'react';
+import styled from 'styled-components';
+import { Menu, MenuGroup, MenuItem } from '..';
+import { DropdownProvider, useDropdown } from './Context';
 
 type Placement =
   | 'top'
@@ -29,16 +32,11 @@ type Placement =
 interface Props {
   placement?: Placement;
   children: React.ReactNode;
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function Popover({
-  placement = 'top',
-  children,
-  isOpen,
-  setIsOpen,
-}: Props) {
+function DropdownTemplate({ placement = 'top', children }: Props) {
+  const { isOpen, setIsOpen } = useDropdown();
+
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -80,3 +78,34 @@ export function Popover({
     </>
   );
 }
+
+export function Dropdown({ placement, children }: Props) {
+  return (
+    <DropdownProvider>
+      <DropdownTemplate placement={placement}>{children}</DropdownTemplate>
+    </DropdownProvider>
+  );
+}
+
+const Wrapper = styled.div`
+  & > * {
+    user-select: none;
+  }
+`;
+
+Dropdown.Trigger = function ({ children }: { children: ReactNode }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { setIsOpen } = useDropdown();
+
+  if (!children) return null;
+
+  const dropdownTrigger = React.cloneElement(<>{children}</>, {
+    onclick: () => setIsOpen((s) => !s),
+  });
+
+  return <Wrapper>{dropdownTrigger}</Wrapper>;
+};
+
+Dropdown.Menu = Menu;
+Dropdown.MenuGroup = MenuGroup;
+Dropdown.MenuItem = MenuItem;

@@ -1,7 +1,6 @@
-import { ReactNode, forwardRef } from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
-import React from 'react';
 
 export enum ButtonType {
   ACCENT = 'accent',
@@ -148,7 +147,7 @@ export const BaseButton = styled.button<{
   appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   white-space: nowrap;
   ${getRoundedStyles}
   ${getTypeStyles}

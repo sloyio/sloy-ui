@@ -1,19 +1,18 @@
 import { StoryFn } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { Menu, MenuGroup, MenuItem, Popover } from '..';
-import { Button } from '../Button';
-import { Icon, IconType } from '../Icon';
+import { Button, ButtonSize, ButtonType, Dropdown, Icon, IconType } from '..';
 
 const Wrapper = styled.div`
   display: flex;
   margin-top: 200px;
 `;
+
 const Example = styled.div``;
 
 const sections = [
   {
-    label: 'Армени',
+    label: 'Армения',
     items: [
       { label: 'Вся страна', id: 'whole_country' },
       { label: 'Ереван', id: 'erevan' },
@@ -37,11 +36,9 @@ const Template: StoryFn = () => {
       .flat()
       .find((elem) => elem.id === city)?.label;
   }, [city]);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   function onClick(city: string) {
     setCity(city);
-    setIsOpen(false);
   }
 
   return (
@@ -89,28 +86,40 @@ const Template: StoryFn = () => {
         saepe voluptatibus quidem dolore.
       </p>
       <Example>
-        <Popover placement="top-start" isOpen={isOpen} setIsOpen={setIsOpen}>
-          <Button prefix={<Icon type={IconType.Earth} />} rounded>
-            {cityName}
-          </Button>
-          <Menu>
-            {sections.map((elem) => (
-              <MenuGroup label={elem.label}>
-                {elem.items.map((el) => (
-                  <MenuItem onClick={() => onClick(el.id)}>{el.label}</MenuItem>
+        <Dropdown placement="top-start">
+          <Dropdown.Trigger>
+            <Button
+              type={ButtonType.DEFAULT}
+              size={ButtonSize.MEDIUM}
+              prefix={<Icon type={IconType.Earth} />}
+              rounded
+            >
+              {cityName}
+            </Button>
+          </Dropdown.Trigger>
+          <Dropdown.Menu>
+            {sections.map((group) => (
+              <Dropdown.MenuGroup title={group.label}>
+                {group.items.map((item) => (
+                  <Dropdown.MenuItem
+                    onClick={() => onClick(item.id)}
+                    isActive={item.id === city}
+                  >
+                    {item.label}
+                  </Dropdown.MenuItem>
                 ))}
-              </MenuGroup>
+              </Dropdown.MenuGroup>
             ))}
-          </Menu>
-        </Popover>
+          </Dropdown.Menu>
+        </Dropdown>
       </Example>
     </Wrapper>
   );
 };
 
 export default {
+  title: 'Atoms/Dropdown',
   component: Template,
-  title: 'Atoms/Popover',
 };
 
 export const Default = Template.bind({});
