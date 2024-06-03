@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { getBackgroundStyle } from '../../utils/getBackgroundStyle';
 
 export const Menu = styled.div`
-  padding: 16px 0;
+  padding: 8px 0;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -44,19 +44,21 @@ export const MenuGroup = ({
 );
 
 const Button = styled.button<{ $isActive?: boolean }>`
-  height: 26px;
-  padding: 0 8px;
   color: #fff;
   background: none;
   border: none;
   outline: none;
+  display: flex;
+  ${({ $isActive }) =>
+    $isActive ? 'padding: 0 8px 0 6px;' : 'padding: 0 8px;'}
 `;
 
 const Text = styled.div`
+  width: 100%;
   font-size: 16px;
   line-height: 20px;
   text-align: left;
-  padding: 6px 8px;
+  padding: 4px 8px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -72,8 +74,7 @@ const Text = styled.div`
 
 const ActiveMark = styled.div<{ $isActive?: boolean }>`
   position: relative;
-  top: -30px;
-  left: -8px;
+  left: -6px;
   width: 2px;
   height: 28px;
   background-color: #fff;
@@ -92,8 +93,8 @@ export const MenuItem = ({
 }) => {
   return (
     <Button $isActive={isActive} onClick={onClick}>
-      <Text>{children}</Text>
       {isActive && <ActiveMark />}
+      <Text>{children}</Text>
     </Button>
   );
 };
