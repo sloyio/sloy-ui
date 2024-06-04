@@ -74,9 +74,10 @@ const Text = styled.div`
 
 const ActiveMark = styled.div<{ $isActive?: boolean }>`
   position: relative;
+  top: 8px;
   left: -6px;
   width: 2px;
-  height: 28px;
+  height: 12px;
   background-color: #fff;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
